@@ -6,6 +6,21 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/_SCENES/MainMenu.unity
+    guid: 33a711f0a6320443786ac93f19f597d7
+  - enabled: 1
+    path: Assets/_SCENES/Eslestirme5x5.unity
+    guid: f2cbfa1859221462c9fc2c47039aebf4
+  - enabled: 1
+    path: Assets/_SCENES/EslestirmeResimdenYazi1x5.unity
+    guid: 66eeb5dd0363d4cec93d7d0c517e60b8
+  - enabled: 1
+    path: Assets/_SCENES/EslestirmeSestenResim1x5.unity
+    guid: cd79156050cd849c0b86fb5b98221565
+  - enabled: 1
+    path: Assets/_SCENES/EslestirmeSestenYazi1x5.unity
+    guid: 873fd30beec14402fa92b6bf9d6d89f2
+  - enabled: 1
+    path: Assets/_SCENES/EslestirmeYazidanResim1x5.unity
+    guid: f1d54e53d198a41cc9cf04b13337e82d
   m_configObjects: {}
