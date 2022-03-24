@@ -24,6 +24,10 @@ public class SoundBox : MonoBehaviour
     {
         audioSource.PlayOneShot(GetAudioClip(name));
     }
+    public void PlayOneShot(string name)
+    {
+        audioSource.PlayOneShot(GetAudioClip(name));
+    }
     public void PlayIfDontPlay(NamesOfSound name)
     {
         if (!audioSource.isPlaying) PlayOneShot(name);
@@ -37,6 +41,12 @@ public class SoundBox : MonoBehaviour
     {
         return Resources.Load<AudioClip>("Sounds/" + name.ToString());
     }
+    AudioClip GetAudioClip(string name)
+    {
+        return Resources.Load<AudioClip>("Sounds/" + name);
+    }
 
-  
+    public bool IsPlaying() { return audioSource.isPlaying; }
+
+
 }

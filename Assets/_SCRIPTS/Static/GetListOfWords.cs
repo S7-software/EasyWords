@@ -8,30 +8,51 @@ public class GetListOfWords : MonoBehaviour
     static List<string> Bina = new List<string>() { "cinema", "hotel" };
     static List<string> Esya = new List<string>() { "balloon", "radio" };
     static List<string> Spor = new List<string>() { "tennis", "judo" };
-    static List<string> Yiyecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt" };
+    static List<string> Yiyecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee" };
     static List<string> Meyve = new List<string>() { "lemon" };
     static List<string> Diger = new List<string>() { "lemon" };
 
+
+  public  static List<string> Harfler = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+
     static List<string> temp = new List<string>();
+    static List<string> tempHarf = new List<string>();
 
     public static string RasgeleUniq()
     {
         if (temp.Count == 0)
         {
             temp = Hepsi();
-            return GetFromTemp();
+            return GetFromTemp(temp);
         }
         else
         {
-
-            return GetFromTemp();
+            return GetFromTemp(temp);
         }
+
+       
+
+    }
+    public static string RasgeleUniqHarf()
+    {
+        if (tempHarf.Count == 0)
+        {
+            tempHarf = YeniList(Harfler);
+            return GetFromTemp(tempHarf);
+        }
+        else
+        {
+            return GetFromTemp(tempHarf);
+        }
+        
+
     }
 
-    static string GetFromTemp()
+
+    static string GetFromTemp(List<string> tmp)
     {
-        string name = temp[Random.Range(0, temp.Count)];
-        temp.Remove(name);
+        string name = tmp[Random.Range(0, tmp.Count)];
+        tmp.Remove(name);
         return name;
     }
 

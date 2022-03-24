@@ -8,7 +8,7 @@ public class CanvasUIMainMenu : MonoBehaviour
 {
 
     [SerializeField] Button _btnEslestirme5x5, _btnEslestirmeYazidanResim1x5,
-        _btnEslestirmeResimdenYazi1x5, _btnEslestirmeSestenYazi1x5, _btnEslestirmeSestenResim1x5;
+        _btnEslestirmeResimdenYazi1x5, _btnEslestirmeSestenYazi1x5, _btnEslestirmeSestenResim1x5,_btnHarfler;
     [SerializeField] [Range(0f, 3f)] float _delay=0f;
     private void Awake()
     {
@@ -22,6 +22,7 @@ public class CanvasUIMainMenu : MonoBehaviour
         _btnEslestirmeResimdenYazi1x5.onClick.AddListener(()=>StartCoroutine(SahneGecis(_delay,Sahne.EslestirmeResimdenYazi1x5)));
         _btnEslestirmeSestenYazi1x5.onClick.AddListener(()=>StartCoroutine(SahneGecis(_delay,Sahne.EslestirmeSestenYazi1x5)));
         _btnEslestirmeSestenResim1x5.onClick.AddListener(()=>StartCoroutine(SahneGecis(_delay,Sahne.EslestirmeSestenResim1x5)));
+        _btnHarfler.onClick.AddListener(()=>StartCoroutine(SahneGecis(_delay,Sahne.Harfler)));
     }
 
     IEnumerator SahneGecis(float delay,Sahne sahne)

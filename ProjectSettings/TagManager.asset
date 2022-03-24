@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Resim
+  - Ses
+  - Yazi
   layers:
   - Default
   - TransparentFX
@@ -43,4 +46,7 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 1399427789
+    locked: 0
+  - name: Ses-Yazi-Resim
+    uniqueID: 3304545665
     locked: 0
