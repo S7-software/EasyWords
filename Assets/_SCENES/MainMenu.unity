@@ -5416,7 +5416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _btnEslestirme5x5: {fileID: 760494476}
   _btnEslestirmeYazidanResim1x5: {fileID: 760494476}
-  _btnEslestirmeResimdenYazi1x5: {fileID: 69619258}
+  _btnEslestirmeResimdenYazi1x5: {fileID: 760494476}
   _btnEslestirmeSestenYazi1x5: {fileID: 350139003}
   _btnEslestirmeSestenResim1x5: {fileID: 2131291606}
   _btnHarfler: {fileID: 568070687}
