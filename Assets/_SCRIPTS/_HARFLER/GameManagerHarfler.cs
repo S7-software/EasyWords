@@ -10,6 +10,10 @@ public class GameManagerHarfler : MonoBehaviour
     {
         AtaHarfleri();
     }
+    private void Start()
+    {
+        CanvasUI.instance.SetUI(true, "ALPHABET");
+    }
 
     private void AtaHarfleri()
     {
