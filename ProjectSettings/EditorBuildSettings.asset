@@ -15,9 +15,6 @@ EditorBuildSettings:
     path: Assets/_SCENES/EslestirmeResimdenYazi1x5.unity
     guid: 66eeb5dd0363d4cec93d7d0c517e60b8
   - enabled: 1
-    path: Assets/_SCENES/EslestirmeSestenResim1x5.unity
-    guid: cd79156050cd849c0b86fb5b98221565
-  - enabled: 1
     path: Assets/_SCENES/EslestirmeYazidanResim1x5.unity
     guid: f1d54e53d198a41cc9cf04b13337e82d
   - enabled: 1
@@ -26,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_SCENES/EslestirmeSestenYazi1x5.unity
     guid: 1776a6c1fd9fe4414a3224314e12df34
+  - enabled: 1
+    path: Assets/_SCENES/EslestirmeSestenResim1x5.unity
+    guid: 5b690a745987947638696b3cfe143e54
   m_configObjects: {}
