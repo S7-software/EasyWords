@@ -13,7 +13,7 @@ public class CanvasUIMainMenu : MonoBehaviour
     [SerializeField] [Range(0f, 3f)] float _delay=0f;
     private void Awake()
     {
-        ButtonlaraHandleAta();
+       // ButtonlaraHandleAta();
     }
 
     private void ButtonlaraHandleAta()
