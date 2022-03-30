@@ -1,22 +1,24 @@
-﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
+using System.Collections.Generic;
+using TMPro;
+using UnityEngine;
 
-public class GameManagerSestenResim : MonoBehaviour
+public class GameManagerYazidanResim : MonoBehaviour
 {
-   public static GameManagerSestenResim instance;
-    [SerializeField] Button _btnSes;
+  public static  GameManagerYazidanResim instance;
+    [SerializeField] TMP_Text _txtName;
+   [SerializeField] Color[] _colors;
     SecenekResim[] _secenekResims;
     string _name;
     bool _bulundu = false;
+
     private void Awake()
     {
         instance = this;
         _secenekResims = FindObjectsOfType<SecenekResim>();
-        _btnSes.onClick.AddListener(HandleSes);
     }
 
-   
+
 
     private void Start()
     {
@@ -43,7 +45,8 @@ public class GameManagerSestenResim : MonoBehaviour
             item.SetSecenek(GetListOfWords.RasgeleUniq());
         }
         _name = secenekResims[Random.Range(0, secenekResims.Length)]._name;
-       Invoke( "HandleSes",0.4f);
+        _txtName.text = _name;
+        _txtName.color = _colors[Random.Range(0,_colors.Length  )];
     }
 
     public void Kontrol(string name, SecenekResim secenekResim)
@@ -64,10 +67,7 @@ public class GameManagerSestenResim : MonoBehaviour
 
         }
     }
-    private void HandleSes()
-    {
-        SoundBox.instance.PlayIfDontPlay(_name);
-    }
+   
     void RemoveAllHandle()
     {
         foreach (var item in _secenekResims)

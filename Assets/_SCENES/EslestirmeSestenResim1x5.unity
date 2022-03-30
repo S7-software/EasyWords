@@ -2846,6 +2846,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 459941581}
     m_Modifications:
+    - target: {fileID: 3637206895976204469, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
+      propertyPath: _colors.Array.data[0].b
+      value: 0.5613208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637206895976204469, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
+      propertyPath: _colors.Array.data[0].g
+      value: 0.59628797
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637206895976204469, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
+      propertyPath: _colors.Array.data[0].r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637206895976204469, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
+      propertyPath: _colors.Array.data[2].b
+      value: 0.34901962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637206895976204469, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
+      propertyPath: _colors.Array.data[2].g
+      value: 0.99215686
+      objectReference: {fileID: 0}
+    - target: {fileID: 3637206895976204469, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
+      propertyPath: _colors.Array.data[2].r
+      value: 0.6862745
+      objectReference: {fileID: 0}
     - target: {fileID: 9210597974254548822, guid: ae7c5d7a1025a4248848b29cdaba44e0, type: 3}
       propertyPath: m_Camera
       value: 

@@ -36,20 +36,22 @@ public class GameManagerResimdenYazi : MonoBehaviour
 
     }
 
-    public void Kontrol(string name,Button button)
+    public void Kontrol(string name,SecenekKelime secenekKelime)
     {
         if (name==_name)
         {
-            SoundBox.instance.PlayOneShot(name);
+            
+            SoundBox.instance.StopAndPlayOneShot(name);
             _bulundu = true;
-            RemoveAllHadnle(_secenekler);
+            BlokSecenekler();
             CanvasUI.instance.ArttirSayi(true);
         }
         else
         {
-            SoundBox.instance.PlayOneShot(NamesOfSound.bayrakKaldir);
-            button.interactable = false;
+            SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
+
             CanvasUI.instance.ArttirSayi(false);
+            secenekKelime.Renk(true);
 
         }
     }
@@ -69,11 +71,13 @@ public class GameManagerResimdenYazi : MonoBehaviour
         _sptRen.sprite = PictureBox.Hangi(_name, false);
 
     }
-    void RemoveAllHadnle(SecenekKelime[] secenekler)
+
+    void BlokSecenekler()
     {
-        foreach (var item in secenekler)
+        foreach (var item in _secenekler )
         {
-            item.ClearHandle();
+            item._basildi = true;
         }
     }
+  
 }

@@ -5,37 +5,56 @@ using UnityEngine.UI;
 
 public class SecenekResim : MonoBehaviour
 {
-    [SerializeField] Button _myButton;
-    [SerializeField] Image _myImage;
-    [SerializeField] Image _myWord;
+    [SerializeField] Image _imgBtn, _imgBtnGolge,_imgWord;
+    [SerializeField] GameObject _goKonum;
     [SerializeField] Color[] _colors;
-   public string _name;
+    [SerializeField] [Range(0f, 3f)] float _delay;
+    [SerializeField] Vector3 _konumAktif;
+    [SerializeField] Sprite[] _sptsOfBtn;
+    public string _name;
+    public bool _basildi = false;
 
-    public void SetResim(string name)
+
+    public void SetSecenek(string name)
     {
         _name = name;
-        _myWord.sprite = PictureBox.Hangi(_name, false);
-       
-
-        ResetResim();
-       
+        _basildi = false;
+        _imgWord.sprite = PictureBox.Hangi(_name, false);
+        Basildi(false);
+        _imgBtn.color = _colors[1];
     }
 
-    void HandleButton()
-    {
-        _myImage.color = _colors[0];
-        _myButton.interactable = false;
-       GameManagerSestenResim.instance. Kontrol(_name,this);
-    }
-    public void Dogru() { _myImage.color = _colors[2]; }
-    public void RemoveHandle() { DoThis.RemoveAllHandleFromButtons(_myButton); }
-    public void ResetResim()
-    {
-        _myImage.color = _colors[1];
-        DoThis.RemoveAllHandleFromButtons(_myButton);
-        _myButton.interactable = true;
 
-        _myButton.onClick.AddListener(HandleButton);
+    public void EventDown()
+    {
+        if (_basildi) return;
+        SoundBox.instance.PlayOneShot(NamesOfSound.bas);
+        Basildi(true);
+        Renk(false);
+
+    }
+    public void EventUp()
+    {
+        if (_basildi) return;
+
+        _basildi = true;
+        if (GameManagerSestenResim.instance != null)
+            GameManagerSestenResim.instance.Kontrol(_name, this);
+        else if (GameManagerYazidanResim.instance != null)
+            GameManagerYazidanResim.instance.Kontrol(_name, this);
+
+    }
+
+    public void Renk(bool kimizi)
+    {
+        _imgBtn.color = (kimizi) ? _colors[0] : _colors[2];
+    }
+
+    void Basildi(bool durum)
+    {
+        _imgBtn.sprite = (durum) ? _sptsOfBtn[1] : _sptsOfBtn[0];
+        _imgBtnGolge.enabled = !durum;
+        _goKonum.transform.localPosition = (durum) ? _konumAktif : Vector3.zero;
     }
 
 }

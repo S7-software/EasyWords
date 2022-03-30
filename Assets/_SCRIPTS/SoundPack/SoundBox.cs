@@ -8,7 +8,7 @@ public class SoundBox : MonoBehaviour
     AudioSource audioSource;
     private void Awake()
     {
-        if (FindObjectsOfType<SoundBox>().Length > 1 )
+        if (FindObjectsOfType<SoundBox>().Length > 1)
         {
             Destroy(this);
         }
@@ -28,7 +28,16 @@ public class SoundBox : MonoBehaviour
     {
         audioSource.PlayOneShot(GetAudioClip(name));
     }
+    public void StopAndPlayOneShot(string name)
+    {
+        audioSource.Stop();
+        audioSource.PlayOneShot(GetAudioClip(name));
+    }
     public void PlayIfDontPlay(NamesOfSound name)
+    {
+        if (!audioSource.isPlaying) PlayOneShot(name);
+    }
+    public void PlayIfDontPlay(string name)
     {
         if (!audioSource.isPlaying) PlayOneShot(name);
     }

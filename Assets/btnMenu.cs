@@ -32,6 +32,7 @@ public class btnMenu : MonoBehaviour
 
     public void ButtonDown()
     {
+        SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         _imgBtn.sprite = _sptsOfBtn[1];
         _imgBtn.color = _colors[1];
         _imgGolge.enabled = false;
@@ -40,8 +41,9 @@ public class btnMenu : MonoBehaviour
     }
     public void ButtonUp()
     {
-        StartButton();
-      //  Invoke(nameof(SahneyeGit), _delay);
+        SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
+
+        Invoke(nameof(SahneyeGit), _delay);
     }
 
     void SahneyeGit()

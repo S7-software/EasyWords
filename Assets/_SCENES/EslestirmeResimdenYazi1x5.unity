@@ -2605,6 +2605,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Secenek.0
       objectReference: {fileID: 0}
+    - target: {fileID: 7197126200567191299, guid: 3e5d987500cc341fd985539f4c7b7f7d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7197126201550248278, guid: 3e5d987500cc341fd985539f4c7b7f7d, type: 3}
       propertyPath: m_Camera
       value: 
