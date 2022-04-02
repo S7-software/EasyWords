@@ -39,13 +39,14 @@ public class CanvasUI : MonoBehaviour
         GoToScene.Hangi(sahneTekrar);
     }
 
-    public void SetUI(int haftaYanlis,int haftaDogru,int gunlukYanlis,int gunlukDogru)
+    public void SetUI(AllStatusOfType allStatusOfType)
     {
+
         _txtHeader.text = "";
-        _countHaftaDogru = haftaDogru;
-        _countHaftaYanlis = haftaYanlis;
-        _countGunlukDogru = gunlukDogru;
-        _countGunlukYanis = gunlukYanlis;
+        _countHaftaDogru = allStatusOfType.HaftaDogru;
+        _countHaftaYanlis = allStatusOfType.HaftaYanlis;
+        _countGunlukDogru = allStatusOfType.GunDogru;
+        _countGunlukYanis = allStatusOfType.GunYanlis;
         Yazdir(_txtGunlukDogru, _countGunlukDogru);
         Yazdir(_txtGunlukYanlis, _countGunlukYanis);
         Yazdir(_txtHaftaDogru, _countHaftaDogru);
@@ -70,12 +71,13 @@ public class CanvasUI : MonoBehaviour
         }
     }
 
-    public void ArttirSayi(bool dogru)
+    public void ArttirSayi(bool dogru,Sahne sahne)
     {
         if (dogru)
         {
             _countGunlukDogru++;
             _countHaftaDogru++;
+            Kayit.Dogru(sahne);
             Yazdir(_txtGunlukDogru, _countGunlukDogru);
             Yazdir(_txtHaftaDogru, _countHaftaDogru);
 
@@ -84,6 +86,8 @@ public class CanvasUI : MonoBehaviour
         {
             _countHaftaYanlis++;
             _countGunlukYanis++;
+            Kayit.Yanlis(sahne);
+
             Yazdir(_txtHaftaYanlis, _countHaftaYanlis);
             Yazdir(_txtGunlukYanlis, _countGunlukYanis);
         }
@@ -93,4 +97,6 @@ public class CanvasUI : MonoBehaviour
     {
         txt.text = "" + sayi;
     }
+
+   
 }

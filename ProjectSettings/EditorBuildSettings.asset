@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_SCENES/EslestirmeYazidanResim1x5.unity
     guid: 6287b283f59f541e6818a33ea258585f
+  - enabled: 1
+    path: Assets/_SCENES/Sayilar.unity
+    guid: 6a879a5b2a604455da8c1c1ecc4b8288
   m_configObjects: {}

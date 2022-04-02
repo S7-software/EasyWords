@@ -12,6 +12,8 @@ public class GameManagerYazidanResim : MonoBehaviour
     string _name;
     bool _bulundu = false;
 
+    int _gunlukYanlis, _gunlukDogru,
+        _haftalikYanlis, _haftalikDogru;
     private void Awake()
     {
         instance = this;
@@ -35,7 +37,10 @@ public class GameManagerYazidanResim : MonoBehaviour
     }
     private void SetScore()
     {
-        CanvasUI.instance.SetUI(15, 15, 0, 0);
+        if (Kayit.IsYeniGun()) Kayit.ResetGun();
+        if (Kayit.IsYeniHafta()) Kayit.ResetHafta();
+        CanvasUI.instance.SetUI(Kayit.GetScore(Sahne.EslestirmeYazidanResim1x5));
+
     }
 
     void SetGame(SecenekResim[] secenekResims)
@@ -57,13 +62,13 @@ public class GameManagerYazidanResim : MonoBehaviour
             SoundBox.instance.StopAndPlayOneShot(name);
 
             _bulundu = true;
-            CanvasUI.instance.ArttirSayi(true);
+            CanvasUI.instance.ArttirSayi(true, Sahne.EslestirmeYazidanResim1x5);
         }
         else
         {
             SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
             secenekResim.Renk(true);
-            CanvasUI.instance.ArttirSayi(false);
+            CanvasUI.instance.ArttirSayi(false, Sahne.EslestirmeYazidanResim1x5);
 
         }
     }

@@ -24,7 +24,10 @@ public class GameManagerResimdenYazi : MonoBehaviour
 
     private void SetScore()
     {
-        CanvasUI.instance.SetUI(15, 15, 0, 0);
+        if (Kayit.IsYeniGun()) Kayit.ResetGun();
+        if (Kayit.IsYeniHafta()) Kayit.ResetHafta();
+
+        CanvasUI.instance.SetUI(Kayit.GetScore(Sahne.EslestirmeResimdenYazi1x5));
     }
 
     private void Update()
@@ -44,13 +47,13 @@ public class GameManagerResimdenYazi : MonoBehaviour
             SoundBox.instance.StopAndPlayOneShot(name);
             _bulundu = true;
             BlokSecenekler();
-            CanvasUI.instance.ArttirSayi(true);
+            CanvasUI.instance.ArttirSayi(true,Sahne.EslestirmeResimdenYazi1x5);
         }
         else
         {
             SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
 
-            CanvasUI.instance.ArttirSayi(false);
+            CanvasUI.instance.ArttirSayi(false, Sahne.EslestirmeResimdenYazi1x5);
             secenekKelime.Renk(true);
 
         }
