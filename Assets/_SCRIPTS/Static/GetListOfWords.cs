@@ -13,7 +13,7 @@ public class GetListOfWords : MonoBehaviour
     static List<string> Diger = new List<string>() { "lemon" };
 
 
-  public  static List<string> Harfler = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
+    public static List<string> Harfler = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
     static List<string> temp = new List<string>();
     static List<string> tempHarf = new List<string>();
@@ -30,7 +30,7 @@ public class GetListOfWords : MonoBehaviour
             return GetFromTemp(temp);
         }
 
-       
+
 
     }
     public static string RasgeleUniqHarf()
@@ -44,7 +44,7 @@ public class GetListOfWords : MonoBehaviour
         {
             return GetFromTemp(tempHarf);
         }
-        
+
 
     }
 
@@ -150,7 +150,7 @@ public class GetListOfWords : MonoBehaviour
         return hepsi;
     }
 
-    static List<string> YeniList(List<string> eski)
+    public static List<string> YeniList(List<string> eski)
     {
         List<string> yeni = new List<string>();
         foreach (var item in eski)
@@ -159,6 +159,21 @@ public class GetListOfWords : MonoBehaviour
         }
         return yeni;
     }
+    public static List<string> Rasgele5Kelime()
+    {
+        List<string> newList = new List<string>();
+        int a = 0;
+        while (a!=5)
+        {
+            string kelime = RasgeleUniq();
+            if (newList.Contains(kelime)) continue;
 
+            newList.Add(kelime);
+            a++;
+        }
+
+
+        return newList;
+    }
 
 }
