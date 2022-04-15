@@ -8,15 +8,17 @@ public class SoundBox : MonoBehaviour
     AudioSource audioSource;
     private void Awake()
     {
-        if (FindObjectsOfType<SoundBox>().Length > 1)
+        if (SoundBox.instance)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
         else
         {
-            DontDestroyOnLoad(this);
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+            
         }
-        instance = this;
+        
         audioSource = GetComponent<AudioSource>();
     }
 

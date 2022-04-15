@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SecenekResim5x : MonoBehaviour
 {
     [SerializeField] Image _imgBtn, _imgBtnGolge, _imgWord;
+    public Image _imgNokta;
     [SerializeField] GameObject _goKonum;
     [SerializeField] Color[] _colors;
     [SerializeField] Vector3 _konumAktif;
@@ -20,6 +21,7 @@ public class SecenekResim5x : MonoBehaviour
         _name = name;
         _basildi = false;
         _bulundu = false;
+        _imgNokta.color = Color.white;
         _imgWord.sprite = PictureBox.Hangi(_name, false);
         Basildi(false);
         Renk(Renk5x.beyaz);
@@ -32,6 +34,7 @@ public class SecenekResim5x : MonoBehaviour
         if (_basildi) return;
         SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         Basildi(true);
+        _imgNokta.color = _colors[((int)Renk5x.sari)];
         Renk(Renk5x.sari);
 
     }
@@ -71,7 +74,10 @@ public class SecenekResim5x : MonoBehaviour
         _imgBtnGolge.enabled = !durum;
         _goKonum.transform.localPosition = (durum) ? _konumAktif : Vector3.zero;
         _basildi = false;
-        if (!durum) Renk(Renk5x.beyaz);
+        if (!durum) {
+            Renk(Renk5x.beyaz);
+            _imgNokta.color = Color.white;
+        }
     }
 
     

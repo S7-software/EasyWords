@@ -8,6 +8,7 @@ public class SecenekYazi5x : MonoBehaviour
 {
     [SerializeField] TMP_Text _myTxt;
     [SerializeField] Color[] _colors;
+    [SerializeField]public Image _imgNokta;
     public string _name;
     public bool _basildi = false;
     public bool _bulundu = false;
@@ -22,7 +23,7 @@ public class SecenekYazi5x : MonoBehaviour
         _myTxt.text = _name;
         _colors[0] = color;
         _myTxt.color = _colors[0];
-        
+        _imgNokta.color = color;
         Basildi(false);
     }
 

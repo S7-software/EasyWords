@@ -11,8 +11,10 @@ public class GameManager5x5 : MonoBehaviour
     SecenekYazi5x _tempYazi = null;
     SecenekResim5x[] _secenekResim5Xes;
     SecenekYazi5x[] _secenekYazi5Xes;
-
+    [SerializeField] GameObject _goLine;
     public Color[] _colors;
+    int _sortingLayerLine;
+    bool _oyunBitti = false;
     private void Awake()
     {
         instance = this;
@@ -23,6 +25,14 @@ public class GameManager5x5 : MonoBehaviour
     private void Start()
     {
         SetScore();
+        SetOyun();
+    }
+
+    private void Update()
+    {
+        if (!_oyunBitti) return;
+        if (SoundBox.instance.IsPlaying()) return;
+        _oyunBitti = false;
         SetOyun();
     }
     private void SetScore()
@@ -56,21 +66,17 @@ public class GameManager5x5 : MonoBehaviour
     }
     public void Kontrol(SecenekYazi5x secenekYazi5X)
     {
-        Debug.Log("Kontrole girdi");
         if (_tempResim != null)
         {
-            Debug.Log("_tempResim != null girdi");
 
             KontrolCift(_tempResim, secenekYazi5X);
         }
         else if (_tempYazi == null)
         {
-            Debug.Log("_tempYazi == null girdi");
             _tempYazi = secenekYazi5X;
         }
         else if (_tempYazi != null)
         {
-        Debug.Log("_tempYazi != null girdi");
             _tempYazi = secenekYazi5X;
             KapaSecenekleriYazi(_tempYazi);
         }
@@ -113,13 +119,23 @@ public class GameManager5x5 : MonoBehaviour
     {
         if (secenekYazi5X._name == secenekResim5X._name)
         {
+            Cizgi tempLine = Instantiate(_goLine).GetComponent<Cizgi>();
+            Color color = secenekYazi5X._imgNokta.color;
+            secenekResim5X._imgNokta.color = color;
             secenekResim5X.Bulundu(true);
             secenekYazi5X.Bulundu(true);
             countBulunma++;
+            _sortingLayerLine++;
+            tempLine.SetLine(
+                 secenekYazi5X.gameObject.transform.position.y,
+                secenekResim5X.gameObject.transform.position.y,
+                color,
+                _sortingLayerLine
+                ); ;
             SoundBox.instance.StopAndPlayOneShot(secenekResim5X._name);
             if (countBulunma == 5)
             {
-                SetOyun();
+                _oyunBitti = true;
             }
             CanvasUI.instance.ArttirSayi(true, Sahne.Eslestirme5x5);
             _tempResim = null;
@@ -134,6 +150,7 @@ public class GameManager5x5 : MonoBehaviour
 
     private void SetOyun()
     {
+        _sortingLayerLine = -100;
         List<Color> _colorsList = new List<Color>();
         foreach (var item in _colors)
         {
@@ -141,7 +158,7 @@ public class GameManager5x5 : MonoBehaviour
         }
         List<string> _tempName1 = GetListOfWords.Rasgele5Kelime();
         List<string> _tempName2 = GetListOfWords.YeniList(_tempName1);
-
+        DeleteAllLines();
 
 
         foreach (var item in _secenekResim5Xes)
@@ -160,5 +177,14 @@ public class GameManager5x5 : MonoBehaviour
         }
         countBulunma = 0;
 
+    }
+
+    void DeleteAllLines()
+    {
+        Cizgi[] cizgis = FindObjectsOfType<Cizgi>();
+        foreach (var item in cizgis)
+        {
+            Destroy(item.gameObject);
+        }
     }
 }
