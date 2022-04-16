@@ -48,6 +48,7 @@ public class GameManagerResimdenYazi : MonoBehaviour
             _bulundu = true;
             BlokSecenekler();
             CanvasUI.instance.ArttirSayi(true,Sahne.EslestirmeResimdenYazi1x5);
+            secenekKelime.Renk(false);
         }
         else
         {

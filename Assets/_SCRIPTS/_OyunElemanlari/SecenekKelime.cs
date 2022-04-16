@@ -22,7 +22,8 @@ public class SecenekKelime : MonoBehaviour
         _txt.text = _name;
         _basildi = false;
         Basildi(false);
-        _imgBtn.color = _colors[1];
+        //_imgBtn.color = _colors[1];
+       
     }
   
 
@@ -31,7 +32,7 @@ public class SecenekKelime : MonoBehaviour
         if (_basildi) return;
         SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         Basildi(true);
-        Renk(false);
+        //Renk(false);
 
     }
     public void EventUp()
@@ -47,7 +48,8 @@ public class SecenekKelime : MonoBehaviour
 
     public void Renk(bool kimizi)
     {
-        _imgBtn.color = (kimizi) ?_colors[0]:_colors[2];
+        //_imgBtn.color = (kimizi) ?_colors[0]:_colors[2];
+        _imgBtn.sprite = kimizi ? _sptsOfBtn[3] : _sptsOfBtn[2];
     }
 
     void Basildi(bool durum) 

@@ -34,7 +34,7 @@ public class btnMenu : MonoBehaviour
     {
         SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         _imgBtn.sprite = _sptsOfBtn[1];
-        _imgBtn.color = _colors[1];
+       // _imgBtn.color = _colors[1];
         _imgGolge.enabled = false;
         _goBtnResim.transform.localPosition = _konumDonwResim;
        
