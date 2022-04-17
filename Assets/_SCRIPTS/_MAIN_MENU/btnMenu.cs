@@ -41,7 +41,7 @@ public class btnMenu : MonoBehaviour
     }
     public void ButtonUp()
     {
-        SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
+        //SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
 
         Invoke(nameof(SahneyeGit), _delay);
     }

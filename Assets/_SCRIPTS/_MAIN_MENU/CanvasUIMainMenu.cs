@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CanvasUIMainMenu : MonoBehaviour
 {
 
-    [SerializeField] Button _btnCikis;
     [SerializeField] [Range(0f, 3f)] float _delay=0f;
     private void Awake()
     {
@@ -16,10 +15,9 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     private void ButtonlaraHandleAta()
     {
-        _btnCikis.onClick.AddListener(HandleCikis);
     }
 
-    private void HandleCikis()
+    public void HandleCikis()
     {
         Application.Quit();
     }

@@ -7,25 +7,23 @@ using TMPro;
 public class CanvasUI : MonoBehaviour
 {
     public static CanvasUI instance;
-    [SerializeField] Button _btnCikis;
     [SerializeField] Sahne _sahneCikis;
     [SerializeField] [Range(0f, 3f)] float _delayCikis;
-    [SerializeField] Button _btnTekrar;
     [SerializeField] Sahne _sahneTekrar;
     [SerializeField] [Range(0f, 3f)] float _delayTekrar;
-    [SerializeField] TMP_Text _txtHaftaYanlis,_txtHaftaDogru,_txtGunlukYanlis,_txtGunlukDogru, _txtHeader,_txtWeek,_txtDay;
+    [SerializeField] TMP_Text _txtHaftaYanlis, _txtHaftaDogru, _txtGunlukYanlis, _txtGunlukDogru, _txtHeader, _txtWeek, _txtDay;
     int _countHaftaYanlis, _countHaftaDogru, _countGunlukYanis, _countGunlukDogru;
     [SerializeField] GameObject _goHeader;
+    [SerializeField] MyButton _myBtnAnaMenu, _myBtnAyarlar;
+    [SerializeField] MyButton.durumButton _myBtnAnaMenuDurum, _myBtnAyarlarDurum;
     private void Awake()
     {
         instance = this;
-        AtaButtnlaraHandle();
+        
     }
-
-    private void AtaButtnlaraHandle()
+    private void Start()
     {
-        _btnCikis.onClick.AddListener(() => StartCoroutine(HandleCikis(_delayCikis,_sahneCikis)));
-        _btnTekrar.onClick.AddListener(() => StartCoroutine(HandleTekrar(_delayTekrar,_sahneTekrar)));
+        SetButtonsDurum();
     }
 
     IEnumerator HandleCikis(float delayCikis, Sahne sahneCikis)
@@ -51,9 +49,10 @@ public class CanvasUI : MonoBehaviour
         Yazdir(_txtGunlukYanlis, _countGunlukYanis);
         Yazdir(_txtHaftaDogru, _countHaftaDogru);
         Yazdir(_txtHaftaYanlis, _countHaftaYanlis);
-        
+
     }
-    public void SetUI(bool isHeader,string header) {
+    public void SetUI(bool isHeader, string header)
+    {
         if (isHeader)
         {
             _txtDay.text = "";
@@ -71,7 +70,7 @@ public class CanvasUI : MonoBehaviour
         }
     }
 
-    public void ArttirSayi(bool dogru,Sahne sahne)
+    public void ArttirSayi(bool dogru, Sahne sahne)
     {
         if (dogru)
         {
@@ -93,10 +92,24 @@ public class CanvasUI : MonoBehaviour
         }
     }
 
-    void Yazdir(TMP_Text txt,int sayi)
+    void Yazdir(TMP_Text txt, int sayi)
     {
         txt.text = "" + sayi;
     }
 
-   
+    public void HandleSolButton()
+    {
+      StartCoroutine(  HandleCikis(_delayCikis, _sahneCikis));
+    }
+    public void HandleSagButton()
+    {
+
+     StartCoroutine(   HandleTekrar(_delayTekrar, _sahneTekrar));
+    }
+
+    void SetButtonsDurum()
+    {
+        _myBtnAnaMenu.SetDurumButton(_myBtnAnaMenuDurum);
+        _myBtnAyarlar.SetDurumButton(_myBtnAyarlarDurum);
+    }
 }

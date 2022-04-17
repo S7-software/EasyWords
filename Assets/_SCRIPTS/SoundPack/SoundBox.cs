@@ -37,10 +37,12 @@ public class SoundBox : MonoBehaviour
     }
     public void PlayIfDontPlay(NamesOfSound name)
     {
+       
         if (!audioSource.isPlaying) PlayOneShot(name);
     }
     public void PlayIfDontPlay(string name)
     {
+        SetVolume(1f);
         if (!audioSource.isPlaying) PlayOneShot(name);
     }
 
@@ -50,10 +52,13 @@ public class SoundBox : MonoBehaviour
     }
     AudioClip GetAudioClip(NamesOfSound name)
     {
+        SetVolume(0.5f);
         return Resources.Load<AudioClip>("Sounds/" + name.ToString());
     }
     AudioClip GetAudioClip(string name)
     {
+        SetVolume(1f);
+
         return Resources.Load<AudioClip>("Sounds/" + name);
     }
 
