@@ -21,7 +21,7 @@ public class SecenekResim5x : MonoBehaviour
         _name = name;
         _basildi = false;
         _bulundu = false;
-        _imgNokta.color = Color.white;
+        _imgNokta.color = _colors[4];
         _imgWord.sprite = PictureBox.Hangi(_name, false);
         Basildi(false);
         Renk(Renk5x.beyaz);
@@ -76,7 +76,7 @@ public class SecenekResim5x : MonoBehaviour
         _basildi = false;
         if (!durum) {
             Renk(Renk5x.beyaz);
-            _imgNokta.color = Color.white;
+            _imgNokta.color = _colors[4];
         }
     }
 
