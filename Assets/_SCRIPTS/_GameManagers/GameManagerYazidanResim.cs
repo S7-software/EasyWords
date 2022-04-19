@@ -60,6 +60,7 @@ public class GameManagerYazidanResim : MonoBehaviour
         {
             RemoveAllHandle();
             SoundBox.instance.StopAndPlayOneShot(name);
+            secenekResim.Renk(true);
 
             _bulundu = true;
             CanvasUI.instance.ArttirSayi(true, Sahne.EslestirmeYazidanResim1x5);
@@ -67,7 +68,7 @@ public class GameManagerYazidanResim : MonoBehaviour
         else
         {
             SoundBox.instance.PlayIfDontPlay(NamesOfSound.cek);
-            secenekResim.Renk(true);
+            secenekResim.Renk(false);
             CanvasUI.instance.ArttirSayi(false, Sahne.EslestirmeYazidanResim1x5);
 
         }

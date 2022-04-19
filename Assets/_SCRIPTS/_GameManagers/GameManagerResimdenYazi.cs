@@ -6,7 +6,7 @@ public class GameManagerResimdenYazi : MonoBehaviour
 {
     public static GameManagerResimdenYazi instance;
     string _name;
-    [SerializeField] SpriteRenderer _sptRen ;
+    [SerializeField] SpriteRenderer _sptRen,_sptRenGolge ;
     bool _bulundu = false;
 
     SecenekKelime[] _secenekler;
@@ -73,7 +73,7 @@ public class GameManagerResimdenYazi : MonoBehaviour
         _name = secenekler[Random.Range(0, secenekler.Length)]._name;
 
         _sptRen.sprite = PictureBox.Hangi(_name, false);
-
+        _sptRenGolge.sprite = _sptRen.sprite;
     }
 
     void BlokSecenekler()

@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class SecenekResim : MonoBehaviour
 {
-    [SerializeField] Image _imgBtn, _imgBtnGolge,_imgWord;
+    [SerializeField] Image _imgBtn, _imgBtnGolge, _imgWord,_imgWordGolge;
     [SerializeField] GameObject _goKonum;
-    [SerializeField] Color[] _colors;
     [SerializeField] [Range(0f, 3f)] float _delay;
     [SerializeField] Vector3 _konumAktif;
     [SerializeField] Sprite[] _sptsOfBtn;
@@ -20,8 +19,10 @@ public class SecenekResim : MonoBehaviour
         _name = name;
         _basildi = false;
         _imgWord.sprite = PictureBox.Hangi(_name, false);
+        _imgWord.color = Color.white;
+        _imgWordGolge.sprite = _imgWord.sprite;
         Basildi(false);
-        _imgBtn.color = _colors[1];
+        DurumButton(StatusOfButton.Basilmadi);
     }
 
 
@@ -30,7 +31,8 @@ public class SecenekResim : MonoBehaviour
         if (_basildi) return;
         SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         Basildi(true);
-        Renk(false);
+        DurumButton(StatusOfButton.Basildi);
+    
 
     }
     public void EventUp()
@@ -47,14 +49,47 @@ public class SecenekResim : MonoBehaviour
 
     public void Renk(bool kimizi)
     {
-        _imgBtn.color = (kimizi) ? _colors[0] : _colors[2];
+        if (kimizi)
+        {
+            DurumButton(StatusOfButton.Yanlis);
+
+
+        }
+        else {
+            _imgWord.color = Color.red;
+            DurumButton(StatusOfButton.Dogru);
+        }
     }
 
     void Basildi(bool durum)
     {
-        _imgBtn.sprite = (durum) ? _sptsOfBtn[1] : _sptsOfBtn[0];
+       
         _imgBtnGolge.enabled = !durum;
         _goKonum.transform.localPosition = (durum) ? _konumAktif : Vector3.zero;
     }
+    void DurumButton(StatusOfButton statusOfButton)
+    {
+        switch (statusOfButton)
+        {
+            case StatusOfButton.Basilmadi:
+                _imgBtn.sprite = _sptsOfBtn[0];
+                break;
+            case StatusOfButton.Basildi:
+                _imgBtn.sprite = _sptsOfBtn[1];
 
+                break;
+            case StatusOfButton.Dogru:
+                _imgBtn.sprite = _sptsOfBtn[2];
+
+                break;
+            case StatusOfButton.Yanlis:
+                _imgBtn.sprite = _sptsOfBtn[3];
+
+                break;
+            case StatusOfButton.Secildi:
+                break;
+            default:
+                break;
+        }
+    }
 }

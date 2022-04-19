@@ -15,7 +15,12 @@ public class SecenekKelime : MonoBehaviour
     public string _name;
    public bool _basildi = false;
 
+    Color _colorText;
 
+    private void Awake()
+    {
+        _colorText = _txt.color;
+    }
     public void SetSecenek(string name)
     {
         _name = name;
@@ -23,7 +28,7 @@ public class SecenekKelime : MonoBehaviour
         _basildi = false;
         Basildi(false);
         //_imgBtn.color = _colors[1];
-       
+        _txt.color = _colorText;
     }
   
 
@@ -50,6 +55,7 @@ public class SecenekKelime : MonoBehaviour
     {
         //_imgBtn.color = (kimizi) ?_colors[0]:_colors[2];
         _imgBtn.sprite = kimizi ? _sptsOfBtn[3] : _sptsOfBtn[2];
+        _txt.color = kimizi ? Color.red : Color.green;
     }
 
     void Basildi(bool durum) 
