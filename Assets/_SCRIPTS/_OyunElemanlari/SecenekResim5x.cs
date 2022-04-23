@@ -15,7 +15,12 @@ public class SecenekResim5x : MonoBehaviour
     public bool _basildi = false;
     public bool _bulundu = false;
     public enum Renk5x { kirmizi,sari,yesil,beyaz}
+    Color _colorImgWord;
 
+    private void Awake()
+    {
+        _colorImgWord = _imgWord.color;
+    }
     public void SetSecenek(string name)
     {
         _name = name;
@@ -24,6 +29,8 @@ public class SecenekResim5x : MonoBehaviour
         _imgNokta.color = _colors[4];
         _imgWord.sprite = PictureBox.Hangi(_name, false);
         _imgWordGolge.sprite = _imgWord.sprite;
+        _imgWord.color = _colorImgWord;
+        _imgWordGolge.enabled = true;
         Basildi(false);
         Renk(Renk5x.beyaz);
     }
@@ -60,6 +67,8 @@ public class SecenekResim5x : MonoBehaviour
         if (durum)
         {
             _bulundu = true;
+           _imgWordGolge.enabled = false;
+            _imgWord.color = new Color(_colorImgWord.r, _colorImgWord.g, _colorImgWord.b, 0.35f);
             Renk(Renk5x.sari);
         }
         else

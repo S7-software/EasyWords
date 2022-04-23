@@ -126,7 +126,8 @@ public class Kayit : MonoBehaviour
 
 
     }
-
+    public static bool GetSesAcik() {return PlayerPrefs.GetInt("sesAcik",1)==1; }
+    public static void SetSesAcik(bool deger) { PlayerPrefs.SetInt("sesAcik",deger?1:0); }
     static DateTime TimeNow()
     {
         DateTime simdi = DateTime.Now;

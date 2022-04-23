@@ -15,11 +15,11 @@ public class MyButton : MonoBehaviour
 
     Color _colorIcon;
     public enum durumButton { aktifDegil, basilmadi, basildi }
-    bool _isActive = true;
+  public  bool _isActive = true;
     private void Awake()
     {
         _colorIcon = _imgIcon.color;
-        //SetDurumButton(_durum);
+        SetDurumButton(_durum);
     }
 
 
@@ -41,7 +41,10 @@ public class MyButton : MonoBehaviour
 
 
 
-
+    public void SetIcon(Sprite sprite)
+    {
+        _imgIcon.sprite = sprite;
+    }
     public void SetDurumButton(durumButton durum)
     {
         _imgIcon.color= (durum == durumButton.aktifDegil)?new Color(_colorIcon.r,_colorIcon.g,_colorIcon.b,0.5f):_colorIcon;
