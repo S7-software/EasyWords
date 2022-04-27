@@ -5,11 +5,24 @@ using System.Collections.Generic;
 public class GetListOfWords : MonoBehaviour
 {
     static List<string> Hayvan = new List<string>() { "cheetah", "chimpanzee", "gorilla", "kangaroo", "panda", "zebra" };
+
     static List<string> Bina = new List<string>() { "cinema", "hotel" };
+
     static List<string> Esya = new List<string>() { "balloon", "radio" };
+
     static List<string> Spor = new List<string>() { "tennis", "judo" };
-    static List<string> Yiyecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee" };
-    static List<string> Meyve = new List<string>() { "lemon" };
+
+    static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee" };
+
+    static List<string> Meyve = new List<string>() { "apple","apricot","avocado","banana","blackberry","cherry","coconut","fig","grape",
+        "kiwi","mango","nectarine","orange","peach","pear","pineapple","quince","strawberry","lemon","melon","watermelon",
+    "brocolli","cabbage","carrot","cauliflower","corn","cucumber","eggplant","greeenbeen","lettuce","leek","mushroom","onion",
+    "pea","potato","pumpkin","radish","tomato","zucchini","pepper","bell pepper","garlic","spinach"};
+
+    static List<string> Vucut = new List<string>() { "eye","nose","mouth","ear","cheek","chin","nostril","eyebrow","eyelid","eyelash","lip",
+        "finger","palm","wrist","elbow","arm","shoulder","hand","knee","leg","calf","ankle","heel","foot","toe","heart","lung","vein",
+    "brain","throat","liver","stomach","kidney","skeleton"};
+
     static List<string> Diger = new List<string>() { "lemon" };
 
 
@@ -101,7 +114,7 @@ public class GetListOfWords : MonoBehaviour
             case 2: return YeniList(Bina);
             case 3: return YeniList(Esya);
             case 4: return YeniList(Spor);
-            case 5: return YeniList(Yiyecek);
+            case 5: return YeniList(YiyecekIcecek);
             case 6: return YeniList(Meyve);
 
             default: return YeniList(Diger);
@@ -127,9 +140,11 @@ public class GetListOfWords : MonoBehaviour
             case Categories.Esya:
                 return YeniList(Esya);
             case Categories.Yiyecek:
-                return YeniList(Yiyecek);
+                return YeniList(YiyecekIcecek);
             case Categories.Diger:
                 return YeniList(Diger);
+            case Categories.Vucut:
+                return YeniList(Vucut);
             case Categories.Karisik:
             default:
                 return Hepsi();
@@ -146,6 +161,7 @@ public class GetListOfWords : MonoBehaviour
         foreach (var item in FullPaket(Categories.Esya)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Yiyecek)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Diger)) { hepsi.Add(item); }
+        foreach (var item in FullPaket(Categories.Vucut)) { hepsi.Add(item); }
 
         return hepsi;
     }

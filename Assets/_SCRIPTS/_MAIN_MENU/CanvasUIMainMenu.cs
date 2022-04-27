@@ -55,7 +55,6 @@ public class CanvasUIMainMenu : MonoBehaviour
            
             _isStatOpen = true;
         }
-        _statButton.SetDurumButton(MyButton.durumButton.basilmadi);
     }
     void KayitlariCekVeAta()
     {

@@ -9,5 +9,6 @@ public enum Categories
    Esya,
    Yiyecek,
    Diger,
-   Karisik
+   Karisik,
+   Vucut
 }
