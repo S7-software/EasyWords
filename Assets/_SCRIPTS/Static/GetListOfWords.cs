@@ -4,7 +4,11 @@ using System.Collections.Generic;
 
 public class GetListOfWords : MonoBehaviour
 {
-    static List<string> Hayvan = new List<string>() { "cheetah", "chimpanzee", "gorilla", "kangaroo", "panda", "zebra" };
+    static List<string> Hayvan = new List<string>() { "cheetah", "chimpanzee", "gorilla", "kangaroo", "panda", "zebra","eagle",
+    "bat","butterfly","duck","hen","camel","horse","deer","cow","sheep","crocodile","whale","elephant","giraffe","monkey","snake","tiger",
+    "lion","bear","fish","ant","bird","cat","dolphin","frog","fox","goat","hamster","jackal","lizard","ostrich","rat","snail","donkey",
+    "dog","fly","mosquito","bull","wolf","penguin","crow","dinosaur","ox","mule","squirrel","turkey","octopus","parrot","rabbit","shark","bee",
+    "cock"};
 
     static List<string> Bina = new List<string>() { "cinema", "hotel" };
 
@@ -14,7 +18,7 @@ public class GetListOfWords : MonoBehaviour
 
     static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee" };
 
-    static List<string> Meyve = new List<string>() { "apple","apricot","avocado","banana","blackberry","cherry","coconut","fig","grape",
+    static List<string> MeyveSebze = new List<string>() { "apple","apricot","avocado","banana","blackberry","cherry","coconut","fig","grape",
         "kiwi","mango","nectarine","orange","peach","pear","pineapple","quince","strawberry","lemon","melon","watermelon",
     "brocolli","cabbage","carrot","cauliflower","corn","cucumber","eggplant","greeenbeen","lettuce","leek","mushroom","onion",
     "pea","potato","pumpkin","radish","tomato","zucchini","pepper","bell pepper","garlic","spinach"};
@@ -115,7 +119,7 @@ public class GetListOfWords : MonoBehaviour
             case 3: return YeniList(Esya);
             case 4: return YeniList(Spor);
             case 5: return YeniList(YiyecekIcecek);
-            case 6: return YeniList(Meyve);
+            case 6: return YeniList(MeyveSebze);
 
             default: return YeniList(Diger);
 
@@ -132,7 +136,7 @@ public class GetListOfWords : MonoBehaviour
             case Categories.Hayvan:
                 return YeniList(Hayvan);
             case Categories.Meyve:
-                return YeniList(Meyve);
+                return YeniList(MeyveSebze);
             case Categories.Bina:
                 return YeniList(Bina);
             case Categories.Spor:
