@@ -13,7 +13,8 @@ public class UI_AYARLAR : MonoBehaviour
     bool _isSesOn = true;
     private void Awake()
     {
-        _isSesOn = Kayit.GetSesAcik();
+        // _isSesOn = Kayit.GetSesAcik();
+        _isSesOn = AYARLAR._sesAcik;
        
     }
     private void Start()
@@ -27,8 +28,9 @@ public class UI_AYARLAR : MonoBehaviour
     {
         if (isSesOn == _isSesOn) return;
         _isSesOn = !_isSesOn;
-        
-        Kayit.SetSesAcik(_isSesOn);
+
+        //Kayit.SetSesAcik(_isSesOn);
+        AYARLAR._sesAcik = _isSesOn;
         if (_isSesOn) SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         SesAyarla();
     }

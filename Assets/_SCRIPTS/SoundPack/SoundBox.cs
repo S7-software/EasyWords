@@ -52,7 +52,8 @@ public class SoundBox : MonoBehaviour
     }
     AudioClip GetAudioClip(NamesOfSound name)
     {
-        SetVolume(Kayit.GetSesAcik()? 0.5f:0);
+        //SetVolume(Kayit.GetSesAcik()? 0.5f:0);
+        SetVolume(AYARLAR._sesAcik? 0.5f:0);
         return Resources.Load<AudioClip>("Sounds/" + name.ToString());
     }
     AudioClip GetAudioClip(string name)
