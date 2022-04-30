@@ -14,7 +14,10 @@ public class GetListOfWords : MonoBehaviour
 
     static List<string> Esya = new List<string>() { "balloon", "radio" };
 
-    static List<string> Spor = new List<string>() { "tennis", "judo" };
+    static List<string> Spor = new List<string>() { "tennis", "judo" ,"football","basketball","badminton","baseball","volleyball","table tennis",
+    "swimming","running","taekwondo","ski","boxing","climbing","bowling","cycling","walking","long jump","skipping","surfing","wrestling",
+    "parachute","hockey","diving","horse racing","golf","cricket","archery","dart","sailing","high jump","car racing","billiards",
+    "fencing","handball","karate","kung fu","ice skating","skateboarding","rugby","heavy lifting"};
 
     static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee" };
 
