@@ -40,6 +40,7 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     public void EventUpStat()
     {
+        if (FindObjectOfType<btnMenuKategori>()) return;
         if (_isStatOpen)
         {
         _statButton.SetIcon(_iconsOfStat[0]);

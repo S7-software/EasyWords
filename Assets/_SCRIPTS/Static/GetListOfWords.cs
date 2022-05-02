@@ -63,13 +63,14 @@ public class GetListOfWords : MonoBehaviour
 
 
     }
-    static List<string > GetListTempOfCategorie(Categories categories)
+    static List<string> GetListTempOfCategorie(Categories categories)
     {
         switch (categories)
         {
             case Categories.Hayvan:
                 return tempHayvan;
-            case Categories.Meyve:;
+            case Categories.Meyve:
+                ;
                 return tempMeyve;
             case Categories.Bina:
                 return tempBina;
@@ -84,8 +85,8 @@ public class GetListOfWords : MonoBehaviour
             case Categories.Vucut:
                 return tempVucut;
             case Categories.Karisik:
-            default:return tempKarisik;
-            
+            default: return tempKarisik;
+
         }
     }
     //public static string RasgeleUniq()
@@ -236,15 +237,21 @@ public class GetListOfWords : MonoBehaviour
     {
         List<string> newList = new List<string>();
         int a = 0;
-        while (a!=5)
+        int zamanAsimi = 0;
+        while (a != 5)
         {
+            zamanAsimi++;
             string kelime = RasgeleUniq(categories);
-            if (newList.Contains(kelime)) continue;
+            if (newList.Contains(kelime)&&zamanAsimi<100)
+            {
+                continue;
+            }
 
             newList.Add(kelime);
             a++;
+            
         }
-
+        if (zamanAsimi > 100) Debug.LogError("zaman asimi: " +zamanAsimi);
 
         return newList;
     }

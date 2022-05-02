@@ -64,12 +64,27 @@ public class GameManagerSestenenYazi : MonoBehaviour
 
     void SetGame(SecenekKelime[] secenekler)
     {
-
+        DoThis.ContainReset();
         foreach (var item in secenekler)
         {
-            item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
+            string name;
+            int zamanAsimi = 0;
+            do
+            {
+                zamanAsimi++;
+                name = GetListOfWords.RasgeleUniq(TEMP._secilenCategorie);
 
+            } while (DoThis.Contain(name) && zamanAsimi < 100);
+            if (zamanAsimi == 100) Debug.LogError("Zaman Aşımı");
+            item.SetSecenek(name); ;
+            DoThis.ContainAdd(name);
         }
+        
+        //foreach (var item in secenekler)
+        //{
+        //    item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
+
+        //}
         _name = secenekler[Random.Range(0, secenekler.Length)]._name;
         Invoke("HandleSes", 0.4f);
 

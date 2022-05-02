@@ -6,7 +6,7 @@ public class GameManagerResimdenYazi : MonoBehaviour
 {
     public static GameManagerResimdenYazi instance;
     string _name;
-    [SerializeField] SpriteRenderer _sptRen,_sptRenGolge ;
+    [SerializeField] SpriteRenderer _sptRen, _sptRenGolge;
     bool _bulundu = false;
 
     SecenekKelime[] _secenekler;
@@ -39,15 +39,15 @@ public class GameManagerResimdenYazi : MonoBehaviour
 
     }
 
-    public void Kontrol(string name,SecenekKelime secenekKelime)
+    public void Kontrol(string name, SecenekKelime secenekKelime)
     {
-        if (name==_name)
+        if (name == _name)
         {
-            
+
             SoundBox.instance.StopAndPlayOneShot(name);
             _bulundu = true;
             BlokSecenekler();
-            CanvasUI.instance.ArttirSayi(true,Sahne.EslestirmeResimdenYazi1x5);
+            CanvasUI.instance.ArttirSayi(true, Sahne.EslestirmeResimdenYazi1x5);
             secenekKelime.Renk(false);
         }
         else
@@ -60,15 +60,24 @@ public class GameManagerResimdenYazi : MonoBehaviour
         }
     }
 
-    
+
 
     void SetGame(SecenekKelime[] secenekler)
     {
-        
+        DoThis.ContainReset();
         foreach (var item in secenekler)
         {
-            item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
-            
+            string name;
+            int zamanAsimi = 0;
+            do
+            {
+                zamanAsimi++;
+                name = GetListOfWords.RasgeleUniq(TEMP._secilenCategorie);
+     
+            } while (DoThis.Contain(name)&&zamanAsimi<100);
+            if (zamanAsimi == 100) Debug.LogError("Zaman Aşımı");
+            item.SetSecenek(name); ;
+            DoThis.ContainAdd(name);
         }
         _name = secenekler[Random.Range(0, secenekler.Length)]._name;
 
@@ -78,10 +87,10 @@ public class GameManagerResimdenYazi : MonoBehaviour
 
     void BlokSecenekler()
     {
-        foreach (var item in _secenekler )
+        foreach (var item in _secenekler)
         {
             item._basildi = true;
         }
     }
-  
+
 }

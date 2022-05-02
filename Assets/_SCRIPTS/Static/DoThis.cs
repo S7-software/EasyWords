@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DoThis : MonoBehaviour
 {
@@ -21,5 +22,16 @@ public class DoThis : MonoBehaviour
         }
         return null;
     }
+
+
+    static List<string> tempKelimeKontrol= new List<string>();
+    public static bool Contain(string name)
+    {
+        return tempKelimeKontrol.Contains(name);
+    }
+    public static void ContainAdd(string name) { tempKelimeKontrol.Add(name); }
+    public static void ContainReset() { tempKelimeKontrol = new List<string>(); }
+
+
 
 }

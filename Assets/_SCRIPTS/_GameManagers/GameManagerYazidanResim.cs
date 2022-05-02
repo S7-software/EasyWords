@@ -45,10 +45,25 @@ public class GameManagerYazidanResim : MonoBehaviour
 
     void SetGame(SecenekResim[] secenekResims)
     {
+        DoThis.ContainReset();
         foreach (var item in secenekResims)
         {
-            item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
+            string name;
+            int zamanAsimi = 0;
+            do
+            {
+                zamanAsimi++;
+                name = GetListOfWords.RasgeleUniq(TEMP._secilenCategorie);
+
+            } while (DoThis.Contain(name) && zamanAsimi < 100);
+            if (zamanAsimi == 100) Debug.LogError("Zaman Aşımı");
+            item.SetSecenek(name); ;
+            DoThis.ContainAdd(name);
         }
+        //foreach (var item in secenekResims)
+        //{
+        //    item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
+        //}
         _name = secenekResims[Random.Range(0, secenekResims.Length)]._name;
         _txtName.text = _name;
         _txtName.color = _colors[Random.Range(0,_colors.Length  )];
