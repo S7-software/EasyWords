@@ -4098,6 +4098,7 @@ MonoBehaviour:
   _iconsOfStat:
   - {fileID: 21300000, guid: 367213108c8e643b7899fe49b36aaeac, type: 3}
   - {fileID: 21300000, guid: a03c8f0f56d8c43428adcb776fa21814, type: 3}
+  _menuCategorie: {fileID: 5676040451039886382, guid: 133aaa185b24748f3858778bb5dda4dc, type: 3}
 --- !u!114 &602228893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12120,6 +12121,10 @@ PrefabInstance:
     - target: {fileID: 4273440366797760162, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
+      propertyPath: _name
+      value: istatistik
       objectReference: {fileID: 0}
     - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: _durum

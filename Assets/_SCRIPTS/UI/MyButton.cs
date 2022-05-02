@@ -12,7 +12,7 @@ public class MyButton : MonoBehaviour
     [SerializeField] GameObject _konum;
     [SerializeField] Image _imgBtn, _imgGolge,_imgIcon;
     [SerializeField] Sprite[] _sptsOfButton;
-
+    public string _name = "default";
     Color _colorIcon;
     public enum durumButton { aktifDegil, basilmadi, basildi }
   public  bool _isActive = true;

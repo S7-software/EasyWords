@@ -156,7 +156,7 @@ public class GameManager5x5 : MonoBehaviour
         {
             _colorsList.Add(item);
         }
-        List<string> _tempName1 = GetListOfWords.Rasgele5Kelime();
+        List<string> _tempName1 = GetListOfWords.Rasgele5Kelime(TEMP._secilenCategorie);
         List<string> _tempName2 = GetListOfWords.YeniList(_tempName1);
         DeleteAllLines();
 

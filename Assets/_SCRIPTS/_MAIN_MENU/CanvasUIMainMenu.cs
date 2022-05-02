@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class CanvasUIMainMenu : MonoBehaviour
 {
-
+    public static CanvasUIMainMenu instance;
     [SerializeField] [Range(0f, 3f)] float _delay=0f;
     [SerializeField] GameObject _goStats;
     [SerializeField] CardOfStatus _resimdenYazi, _sestenYazi, _sestenResim, _yazidanResim, _besX5,_hepsi;
@@ -14,9 +14,11 @@ public class CanvasUIMainMenu : MonoBehaviour
     
     [SerializeField] MyButton _statButton;
     [SerializeField] Sprite[] _iconsOfStat;
+    public GameObject _menuCategorie;
     bool _isStatOpen = false;
     private void Awake()
     {
+        instance = this;
         _goStats.SetActive(false);
         _statButton.SetIcon(_iconsOfStat[0]);
     }

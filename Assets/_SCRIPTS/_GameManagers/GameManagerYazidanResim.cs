@@ -47,7 +47,7 @@ public class GameManagerYazidanResim : MonoBehaviour
     {
         foreach (var item in secenekResims)
         {
-            item.SetSecenek(GetListOfWords.RasgeleUniq());
+            item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
         }
         _name = secenekResims[Random.Range(0, secenekResims.Length)]._name;
         _txtName.text = _name;

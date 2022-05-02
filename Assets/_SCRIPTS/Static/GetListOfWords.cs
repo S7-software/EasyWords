@@ -36,13 +36,24 @@ public class GetListOfWords : MonoBehaviour
     public static List<string> Harfler = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
 
     static List<string> temp = new List<string>();
+    static List<string> tempHayvan = new List<string>();
+    static List<string> tempMeyve = new List<string>();
+    static List<string> tempBina = new List<string>();
+    static List<string> tempSpor = new List<string>();
+    static List<string> tempEsya = new List<string>();
+    static List<string> tempYiyecek = new List<string>();
+    static List<string> tempDiger = new List<string>();
+    static List<string> tempKarisik = new List<string>();
+    static List<string> tempVucut = new List<string>();
     static List<string> tempHarf = new List<string>();
 
-    public static string RasgeleUniq()
+
+    public static string RasgeleUniq(Categories categories)
     {
+        List<string> temp = GetListTempOfCategorie(categories);
         if (temp.Count == 0)
         {
-            temp = Hepsi();
+            temp = FullPaket(categories);
             return GetFromTemp(temp);
         }
         else
@@ -51,8 +62,47 @@ public class GetListOfWords : MonoBehaviour
         }
 
 
-
     }
+    static List<string > GetListTempOfCategorie(Categories categories)
+    {
+        switch (categories)
+        {
+            case Categories.Hayvan:
+                return tempHayvan;
+            case Categories.Meyve:;
+                return tempMeyve;
+            case Categories.Bina:
+                return tempBina;
+            case Categories.Spor:
+                return tempSpor;
+            case Categories.Esya:
+                return tempEsya;
+            case Categories.Yiyecek:
+                return tempYiyecek;
+            case Categories.Diger:
+                return tempDiger;
+            case Categories.Vucut:
+                return tempVucut;
+            case Categories.Karisik:
+            default:return tempKarisik;
+            
+        }
+    }
+    //public static string RasgeleUniq()
+    //{
+    //    if (temp.Count == 0)
+    //    {
+    //        temp = Hepsi();
+    //        return GetFromTemp(temp);
+    //    }
+    //    else
+    //    {
+    //        return GetFromTemp(temp);
+    //    }
+
+
+
+    //}
     public static string RasgeleUniqHarf()
     {
         if (tempHarf.Count == 0)
@@ -182,13 +232,13 @@ public class GetListOfWords : MonoBehaviour
         }
         return yeni;
     }
-    public static List<string> Rasgele5Kelime()
+    public static List<string> Rasgele5Kelime(Categories categories)
     {
         List<string> newList = new List<string>();
         int a = 0;
         while (a!=5)
         {
-            string kelime = RasgeleUniq();
+            string kelime = RasgeleUniq(categories);
             if (newList.Contains(kelime)) continue;
 
             newList.Add(kelime);

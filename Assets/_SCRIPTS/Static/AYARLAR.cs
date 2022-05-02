@@ -8,6 +8,7 @@ public class AYARLAR : MonoBehaviour
     const string _nameOfAyarlar = "bin.json";
     public static bool _sesAcik=true;
     public static bool _reklamVar=true;
+    public static bool _premiumVar=false;
 
 
 
@@ -22,6 +23,7 @@ public class AYARLAR : MonoBehaviour
             _ayarlar = JsonUtility.FromJson<_AYARLAR>(json);
             _sesAcik = _ayarlar._sesAcik;
             _reklamVar = _ayarlar._reklamVar;
+            _premiumVar = _ayarlar._premiumVar;
 
         }
         catch (System.Exception)
@@ -38,6 +40,7 @@ public class AYARLAR : MonoBehaviour
         _AYARLAR _ayarlar = new _AYARLAR();
         _ayarlar._sesAcik = _sesAcik;
         _ayarlar._reklamVar = _reklamVar;
+        _ayarlar._premiumVar = _premiumVar;
         string temp = JsonUtility.ToJson(_ayarlar);
         File.WriteAllText(Application.dataPath + _yolAyarlar + _nameOfAyarlar, temp);
     }
@@ -46,4 +49,5 @@ class _AYARLAR
 {
     public  bool _sesAcik;
     public bool _reklamVar;
+    public bool _premiumVar;
 }

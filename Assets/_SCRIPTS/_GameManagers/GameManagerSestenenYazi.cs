@@ -67,7 +67,7 @@ public class GameManagerSestenenYazi : MonoBehaviour
 
         foreach (var item in secenekler)
         {
-            item.SetSecenek(GetListOfWords.RasgeleUniq());
+            item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
 
         }
         _name = secenekler[Random.Range(0, secenekler.Length)]._name;

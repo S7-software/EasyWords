@@ -17,10 +17,10 @@ public class PictureBox : MonoBehaviour
         return Resoruce(KeyHarf(name, active));
     }
     public static Sprite RasgeleDuz() { return Resoruce(Key(GetListOfWords.Rasgele(), false)); }
-    public static Sprite RasgeleDuzUniq() { return Resoruce(Key(GetListOfWords.RasgeleUniq(), false)); }
+//    public static Sprite RasgeleDuzUniq() { return Resoruce(Key(GetListOfWords.RasgeleUniq(), false)); }
     public static Sprite RasgeleDuzUniqHarf() { return Resoruce(yolHarf+GetListOfWords.RasgeleUniqHarf()); }
     public static Sprite RasgeleActive() { return Resoruce(Key(GetListOfWords.Rasgele(), true)); }
-    public static Sprite RasgeleActiveUniq() { return Resoruce(Key(GetListOfWords.RasgeleUniq(), true)); }
+  //  public static Sprite RasgeleActiveUniq() { return Resoruce(Key(GetListOfWords.RasgeleUniq(), true)); }
 
     static string Key(string name, bool durum) { return yol + ((durum) ? name + "1" : name); }
     static string KeyHarf(string name, bool durum) { return yolHarf + ((durum) ? name + "1" : name); }
