@@ -5,13 +5,15 @@ using UnityEngine.UI;
 using TMPro;
 public class UI_SATIN_ALMA : MonoBehaviour
 {
-    [SerializeField] MyButton _btnAds, _btnPremium, _btnMenu;
-    [SerializeField] TMP_Text _txtAds,_txtPremium;
-    [SerializeField] Image _imgAds,_imgPremium;
+    public static UI_SATIN_ALMA instance;
+    [SerializeField] MyButton _btnAds, _btnPremium, _btnMenu,_btnAdsPre;
+    [SerializeField] TMP_Text _txtAds,_txtPremium,_txtAdsPre;
+    [SerializeField] Image _imgAds,_imgPremium,_imgAdsPre;
+    [SerializeField] Sprite _iconBtnAdsPreBasarisiz;
 
     private void Awake()
     {
-      
+        instance = this;
 
     }
     private void Start()
@@ -26,13 +28,24 @@ public class UI_SATIN_ALMA : MonoBehaviour
     }
     public void EvetnAds(bool basarili)
     {
-
+        SetAdsDurum(basarili);
+        AYARLAR._reklamVar = !basarili;
     }
     public void EventPremium()
     {
     }
     public void EventPremium(bool basarili)
     {
+        SetPremiumDurum(basarili);
+        AYARLAR._premiumVar = basarili;
+    }
+    public void EventAdsPremium()
+    {
+    }
+    public void EventAdsPremium(bool basarili)
+    {
+        SetPremiumDurum(basarili);
+        AYARLAR._premiumVar = basarili;
     }
     public void EventExit()
     {
@@ -43,8 +56,14 @@ public class UI_SATIN_ALMA : MonoBehaviour
     }
   void SetDurum()
     {
-        SetAdsDurum(true);
-        SetPremiumDurum(true);
+        //bool durumAds = !AYARLAR._reklamVar;
+        //bool durumPre = AYARLAR._premiumVar;
+        bool durumAds = true;
+        bool durumPre = true;
+
+        SetAdsDurum(durumAds);
+        SetPremiumDurum(durumPre);
+        SetAdsPremiumDurum(durumAds, durumPre);
     }
     void SetAdsDurum(bool satinAlindi)
     {
@@ -77,6 +96,30 @@ public class UI_SATIN_ALMA : MonoBehaviour
             _btnPremium.SetDurumButton(MyButton.durumButton.basilmadi);
             _txtPremium.enabled = true;
             _imgPremium.enabled = false;
+        }
+
+    }
+    void SetAdsPremiumDurum(bool satinAlindiAds,bool satinAlindiPre)
+    {
+        if (satinAlindiAds&&satinAlindiPre)
+        {
+            _btnAdsPre.SetDurumButton(MyButton.durumButton.aktifDegil);
+            _btnAdsPre.SetTusIceride(true);
+            _txtAdsPre.enabled = false;
+            _imgAdsPre.enabled = true;
+        }else if ((!satinAlindiPre && satinAlindiAds) || (satinAlindiPre && !satinAlindiAds))
+        {
+            _btnAdsPre.SetDurumButton(MyButton.durumButton.aktifDegil);
+            _btnAdsPre.SetTusIceride(true);
+            _btnAdsPre.SetIcon(_iconBtnAdsPreBasarisiz);
+            _txtAdsPre.enabled = false;
+            _imgAdsPre.enabled = true;
+        }
+        else
+        {
+            _btnAdsPre.SetDurumButton(MyButton.durumButton.basilmadi);
+            _txtAdsPre.enabled = true;
+            _imgAdsPre.enabled = false;
         }
 
     }
