@@ -55,4 +55,10 @@ public class MyButton : MonoBehaviour
 
     }
 
+    public void SetTusIceride(bool dogru)
+    {
+        _konum.transform.localPosition = dogru ? _konumV3 : Vector3.zero;
+
+    }
+
 }

@@ -8,7 +8,7 @@ public class CanvasUIMainMenu : MonoBehaviour
 {
     public static CanvasUIMainMenu instance;
     [SerializeField] [Range(0f, 3f)] float _delay=0f;
-    [SerializeField] GameObject _goStats;
+    [SerializeField] GameObject _goStats,_goAyarlar,_goSatinAlma;
     [SerializeField] CardOfStatus _resimdenYazi, _sestenYazi, _sestenResim, _yazidanResim, _besX5,_hepsi;
     [Header("Stat Button")]
     
@@ -27,6 +27,7 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     public void HandleCikis()
     {
+        if (FindObjectOfType<btnMenuKategori>()) return;
         Application.Quit();
     }
 
@@ -37,7 +38,17 @@ public class CanvasUIMainMenu : MonoBehaviour
     }
 
 
+    public void EventAyarlar()
+    {
+        if (FindObjectOfType<btnMenuKategori>()) return;
+        Instantiate(_goAyarlar);
+    }
 
+    public void EventSatinAlma()
+    {
+        if (FindObjectOfType<btnMenuKategori>()) return;
+        Instantiate(_goSatinAlma);
+    }
     public void EventUpStat()
     {
         if (FindObjectOfType<btnMenuKategori>()) return;

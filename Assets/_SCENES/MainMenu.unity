@@ -226,7 +226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _delay
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
@@ -1605,7 +1605,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _delay
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
@@ -4088,6 +4088,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _delay: 0
   _goStats: {fileID: 1290968250}
+  _goAyarlar: {fileID: 6688982979189369380, guid: 58a49db58f0cd467d8a6fc049d146977, type: 3}
+  _goSatinAlma: {fileID: 5276979827217719401, guid: 1faa28973d6424856a29415741b66e43, type: 3}
   _resimdenYazi: {fileID: 1776938984}
   _sestenYazi: {fileID: 617356096}
   _sestenResim: {fileID: 949002491}
@@ -4335,11 +4337,6 @@ CanvasRenderer:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1278679550980614842, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
   m_PrefabInstance: {fileID: 1753139961}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &648981742 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2632963820738004450, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
-  m_PrefabInstance: {fileID: 1093058311}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &660334458
 PrefabInstance:
@@ -7726,7 +7723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _delay
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
@@ -7875,7 +7872,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -7884,7 +7881,7 @@ PrefabInstance:
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1903918444}
+      objectReference: {fileID: 602228892}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -7895,7 +7892,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OLUSTUR
+      value: EventAyarlar
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -7903,15 +7900,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GoOlusturForEvent, Assembly-CSharp
+      value: CanvasUIMainMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
       value: 
-      objectReference: {fileID: 6688982979189369380, guid: 58a49db58f0cd467d8a6fc049d146977, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.GameObject, UnityEngine
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 2632963820738004450, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Name
@@ -7921,6 +7918,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 8fae48bcc79cb4249913e5a29d9bbfe8, type: 3}
+    - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
+      propertyPath: _name
+      value: ayarlar
+      objectReference: {fileID: 0}
     - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: _durum
       value: 1
@@ -8109,7 +8110,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2632963820738004450, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Name
-      value: myBtnDefaultKucuk
+      value: myBtnCikis
       objectReference: {fileID: 0}
     - target: {fileID: 4273440366797760162, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Sprite
@@ -8130,6 +8131,10 @@ PrefabInstance:
     - target: {fileID: 4273440366797760162, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Color.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
+      propertyPath: _name
+      value: cikis
       objectReference: {fileID: 0}
     - target: {fileID: 7613888033949438028, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_IsActive
@@ -10465,7 +10470,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _delay
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
@@ -10582,7 +10587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _delay
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
@@ -11513,7 +11518,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _delay
-      value: 0.4
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
@@ -12141,18 +12146,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1017785307952755841, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
   m_PrefabInstance: {fileID: 1093058311}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1903918444
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648981742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ea51c0d42cfb404289bba78044c7acd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1909500455
 GameObject:
   m_ObjectHideFlags: 0
@@ -12666,7 +12659,7 @@ PrefabInstance:
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 602228892}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
@@ -12677,7 +12670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: HandleSagButton
+      value: EventSatinAlma
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
@@ -12685,7 +12678,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: CanvasUI, Assembly-CSharp
+      value: CanvasUIMainMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1123719386408061908, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -12700,8 +12693,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: 0d9f8ddcb56734e3e8b0371b2d9745e2, type: 3}
     - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
+      propertyPath: _name
+      value: satinalma
+      objectReference: {fileID: 0}
+    - target: {fileID: 6892554828951138478, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: _durum
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7878938835904448284, guid: 643d723680fb5499ba02f4ae85e02e83, type: 3}
       propertyPath: m_RootOrder
@@ -13575,6 +13572,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 791620725}
     m_Modifications:
+    - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
+      propertyPath: _delay
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 1278679550980614837, guid: 0322016ff8293474595402d4fb100f0b, type: 3}
       propertyPath: _gidilecekSahne
       value: 6
