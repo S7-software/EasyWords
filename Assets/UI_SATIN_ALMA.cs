@@ -10,6 +10,7 @@ public class UI_SATIN_ALMA : MonoBehaviour
     [SerializeField] TMP_Text _txtAds,_txtPremium,_txtAdsPre;
     [SerializeField] Image _imgAds,_imgPremium,_imgAdsPre;
     [SerializeField] Sprite _iconBtnAdsPreBasarisiz;
+    [SerializeField] Text _txtTempAds,_txtTempPre,_txtTempAdsPre;
 
     private void Awake()
     {
@@ -58,12 +59,16 @@ public class UI_SATIN_ALMA : MonoBehaviour
     {
         //bool durumAds = !AYARLAR._reklamVar;
         //bool durumPre = AYARLAR._premiumVar;
-        bool durumAds = true;
-        bool durumPre = true;
+        bool durumAds = false;
+        bool durumPre = false;
 
         SetAdsDurum(durumAds);
         SetPremiumDurum(durumPre);
         SetAdsPremiumDurum(durumAds, durumPre);
+
+        _txtAds.text = _txtTempAds.text;
+        _txtPremium.text = _txtTempPre.text;
+        _txtAdsPre.text = _txtTempAdsPre.text;
     }
     void SetAdsDurum(bool satinAlindi)
     {
