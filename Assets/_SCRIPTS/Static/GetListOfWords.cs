@@ -6,20 +6,33 @@ public class GetListOfWords : MonoBehaviour
 {
     static List<string> Hayvan = new List<string>() { "cheetah", "chimpanzee", "gorilla", "kangaroo", "panda", "zebra","eagle",
     "bat","butterfly","duck","hen","camel","horse","deer","cow","sheep","crocodile","whale","elephant","giraffe","monkey","snake","tiger",
-    "lion","bear","fish","ant","bird","cat","dolphin","frog","fox","goat","hamster","jackal","lizard","ostrich","rat","snail","donkey",
+    "lion","bear","ant","bird","cat","dolphin","frog","fox","goat","hamster","jackal","lizard","ostrich","rat","snail","donkey",
     "dog","fly","mosquito","bull","wolf","penguin","crow","dinosaur","ox","mule","squirrel","turkey","octopus","parrot","rabbit","shark","bee",
     "cock"};
-
-    static List<string> Bina = new List<string>() { "cinema", "hotel" };
-
-    static List<string> Esya = new List<string>() { "balloon", "radio" };
+    //
+    static List<string> Jobs = new List<string>() { "writer", "web designer","veterinarian","teacher","secretary","scientist","solider",
+    "reporter","pyschologist","police officer","pilot","photographer","pharmacist","nurse","musician","lawyer","judge","fire fighter",
+    "engineer","designer","dentist","doctor","dancer","baker","cook","athlete","astronaut","artist","architect","archeologist",
+    "accountant","actor","actuary","chemist"};
+    //
+    static List<string> Araclar = new List<string>() { "train", "plane","automobile","bus","bike","taxi","motorcycle","boat","ship","helicopter",
+    "truck","tractor","tram","yacht","ambulance","bulldozer","caravan","jet","limousine","space shuttle","cable car","cargo ship","catamaran",
+    "submarine","tank","sailboat","hot air balloon"};
+    //
+    static List<string> Esya = new List<string>() { "balloon", "radio","desk","book","chalkboard","computer","clock","pencil","scissors",
+    "dictionary","pen","chair","paper","chalk","ruler","map","stapler","pencil sharpener","calculator","garbage can","projector","glue",
+    "highlighter","rubber","paper clip","white board","table","compass","protactor","file","ink pen","duster","bag","locker",
+    "notice board", "pencil case","colors"};
 
     static List<string> Spor = new List<string>() { "tennis", "judo" ,"football","basketball","badminton","baseball","volleyball","table tennis",
     "swimming","running","taekwondo","ski","boxing","climbing","bowling","cycling","walking","long jump","skipping","surfing","wrestling",
     "parachute","hockey","diving","horse racing","golf","cricket","archery","dart","sailing","high jump","car racing","billiards",
     "fencing","handball","karate","kung fu","ice skating","skateboarding","rugby","heavy lifting"};
-
-    static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee" };
+    //
+    static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee",
+    "bread","rice","pasta","meat","fish","hamburger","hot-dogs","chips","meatball","chicken","steak","soup","cheese","olive","cereal","omelette",
+    "egg","ketchup","honey","jam","pie","cookie","ice cream","chocolate","dates","nut","wallut","hazelnut","chestnut","tea","milk","fruit juice",
+    "water","mineral water","fizzy drinks","lemonade"};
 
     static List<string> MeyveSebze = new List<string>() { "apple","apricot","avocado","banana","blackberry","cherry","coconut","fig","grape",
         "kiwi","mango","nectarine","orange","peach","pear","pineapple","quince","strawberry","lemon","melon","watermelon",
@@ -30,7 +43,7 @@ public class GetListOfWords : MonoBehaviour
         "finger","palm","wrist","elbow","arm","shoulder","hand","knee","leg","calf","ankle","heel","foot","toe","heart","lung","vein",
     "brain","throat","liver","stomach","kidney","skeleton"};
 
-    static List<string> Diger = new List<string>() { "lemon" };
+    static List<string> Diger = new List<string>() { "cinema" ,"hotel"};
 
 
     public static List<string> Harfler = new List<string>() { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z" };
@@ -38,7 +51,7 @@ public class GetListOfWords : MonoBehaviour
     static List<string> temp = new List<string>();
     static List<string> tempHayvan = new List<string>();
     static List<string> tempMeyve = new List<string>();
-    static List<string> tempBina = new List<string>();
+    static List<string> tempJobs = new List<string>();
     static List<string> tempSpor = new List<string>();
     static List<string> tempEsya = new List<string>();
     static List<string> tempYiyecek = new List<string>();
@@ -72,8 +85,8 @@ public class GetListOfWords : MonoBehaviour
             case Categories.Meyve:
                 ;
                 return tempMeyve;
-            case Categories.Bina:
-                return tempBina;
+            case Categories.Jobs:
+                return tempJobs;
             case Categories.Spor:
                 return tempSpor;
             case Categories.Esya:
@@ -165,15 +178,16 @@ public class GetListOfWords : MonoBehaviour
 
     static List<string> RasgeleList()
     {
-        int key = Random.Range(1, 7);
+        int key = Random.Range(1, 8);
         switch (key)
         {
             case 1: return YeniList(Hayvan);
-            case 2: return YeniList(Bina);
+            case 2: return YeniList(Jobs);
             case 3: return YeniList(Esya);
             case 4: return YeniList(Spor);
             case 5: return YeniList(YiyecekIcecek);
             case 6: return YeniList(MeyveSebze);
+            case 7: return YeniList(Araclar);
 
             default: return YeniList(Diger);
 
@@ -191,8 +205,8 @@ public class GetListOfWords : MonoBehaviour
                 return YeniList(Hayvan);
             case Categories.Meyve:
                 return YeniList(MeyveSebze);
-            case Categories.Bina:
-                return YeniList(Bina);
+            case Categories.Jobs:
+                return YeniList(Jobs);
             case Categories.Spor:
                 return YeniList(Spor);
             case Categories.Esya:
@@ -203,6 +217,8 @@ public class GetListOfWords : MonoBehaviour
                 return YeniList(Diger);
             case Categories.Vucut:
                 return YeniList(Vucut);
+            case Categories.Araclar:
+                return YeniList(Araclar);
             case Categories.Karisik:
             default:
                 return Hepsi();
@@ -214,12 +230,13 @@ public class GetListOfWords : MonoBehaviour
         List<string> hepsi = new List<string>();
         foreach (var item in FullPaket(Categories.Hayvan)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Meyve)) { hepsi.Add(item); }
-        foreach (var item in FullPaket(Categories.Bina)) { hepsi.Add(item); }
+        foreach (var item in FullPaket(Categories.Jobs)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Spor)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Esya)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Yiyecek)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Diger)) { hepsi.Add(item); }
         foreach (var item in FullPaket(Categories.Vucut)) { hepsi.Add(item); }
+        foreach (var item in FullPaket(Categories.Araclar)) { hepsi.Add(item); }
 
         return hepsi;
     }

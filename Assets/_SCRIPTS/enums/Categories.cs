@@ -1,14 +1,15 @@
 
 
-public enum Categories 
+public enum Categories
 {
-   Hayvan,
-   Meyve,
-   Bina,
-   Spor,
-   Esya,
-   Yiyecek,
-   Diger,
-   Karisik,
-   Vucut
+    Hayvan,
+    Meyve,
+    Jobs,
+    Spor,
+    Esya,
+    Yiyecek,
+    Diger,
+    Karisik,
+    Vucut,
+    Araclar
 }
