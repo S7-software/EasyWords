@@ -9,20 +9,23 @@ public class GetListOfWords : MonoBehaviour
     "lion","bear","ant","bird","cat","dolphin","frog","fox","goat","hamster","jackal","lizard","ostrich","rat","snail","donkey",
     "dog","fly","mosquito","bull","wolf","penguin","crow","dinosaur","ox","mule","squirrel","turkey","octopus","parrot","rabbit","shark","bee",
     "cock"};
-    //
-    static List<string> Jobs = new List<string>() { "writer", "web designer","veterinarian","teacher","secretary","scientist","solider",
+    
+    static List<string> Jobs = new List<string>() { "writer", "programmer","veterinarian","teacher","secretary","scientist","solider",
     "reporter","pyschologist","police officer","pilot","photographer","pharmacist","nurse","musician","lawyer","judge","fire fighter",
-    "engineer","designer","dentist","doctor","dancer","baker","cook","athlete","astronaut","artist","architect","archeologist",
-    "accountant","actor","actuary","chemist"};
+    "engineer","designer","dentist","doctor","dancer","baker","cook","astronaut","artist","architect","archeologist",
+    "accountant","actor","chemist"};
     //
     static List<string> Araclar = new List<string>() { "train", "plane","automobile","bus","bike","taxi","motorcycle","boat","ship","helicopter",
     "truck","tractor","tram","yacht","ambulance","bulldozer","caravan","jet","limousine","space shuttle","cable car","cargo ship","catamaran",
     "submarine","tank","sailboat","hot air balloon"};
     //
-    static List<string> Esya = new List<string>() { "balloon", "radio","desk","book","chalkboard","computer","clock","pencil","scissors",
+    static List<string> Esya = new List<string>() { "desk","book","chalkboard","computer","clock","pencil","scissors",
     "dictionary","pen","chair","paper","chalk","ruler","map","stapler","pencil sharpener","calculator","garbage can","projector","glue",
     "highlighter","rubber","paper clip","white board","table","compass","protactor","file","ink pen","duster","bag","locker",
-    "notice board", "pencil case","colors"};
+    "notice board", "pencil case","colors",
+
+    "balloon", "radio"
+    };
 
     static List<string> Spor = new List<string>() { "tennis", "judo" ,"football","basketball","badminton","baseball","volleyball","table tennis",
     "swimming","running","taekwondo","ski","boxing","climbing","bowling","cycling","walking","long jump","skipping","surfing","wrestling",
