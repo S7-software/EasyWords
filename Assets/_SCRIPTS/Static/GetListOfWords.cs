@@ -14,9 +14,9 @@ public class GetListOfWords : MonoBehaviour
     "reporter","pyschologist","police officer","pilot","photographer","pharmacist","nurse","musician","lawyer","judge","fire fighter",
     "engineer","designer","dentist","doctor","dancer","baker","cook","astronaut","artist","architect","archeologist",
     "accountant","actor","chemist"};
-    //
-    static List<string> Araclar = new List<string>() { "train", "plane","automobile","bus","bike","taxi","motorcycle","boat","ship","helicopter",
-    "truck","tractor","tram","yacht","ambulance","bulldozer","caravan","jet","limousine","space shuttle","cable car","cargo ship","catamaran",
+    
+    static List<string> Araclar = new List<string>() { "train", "plane","automobile","bus","bike","taxi","motorcycle","ship","helicopter",
+    "truck","tractor","tram","yacht","ambulance","bulldozer","caravan","jet","limousine","space shuttle","cable car","cargo ship",
     "submarine","tank","sailboat","hot air balloon"};
     //
     static List<string> Esya = new List<string>() { "desk","book","chalkboard","computer","clock","pencil","scissors",

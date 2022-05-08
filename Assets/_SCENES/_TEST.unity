@@ -423,7 +423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7ee7ad5616f450a9056d442b55398f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  kategori: 2
+  kategori: 9
   imgResim: {fileID: 1659389306}
   imgGolge: {fileID: 1754771385}
   txt: {fileID: 1542132918}
