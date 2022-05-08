@@ -33,9 +33,9 @@ public class GetListOfWords : MonoBehaviour
     "fencing","handball","karate","kung fu","ice skating","skateboarding","rugby","heavy lifting"};
     //
     static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee",
-    "bread","rice","pasta","meat","fish","hamburger","hot-dogs","chips","meatball","chicken","steak","soup","cheese","olive","cereal","omelette",
-    "egg","ketchup","honey","jam","pie","cookie","ice cream","chocolate","dates","nut","wallut","hazelnut","chestnut","tea","milk","fruit juice",
-    "water","mineral water","fizzy drinks","lemonade"};
+    "bread","rice","pasta","meat","fish","hamburger","hot-dog","chips","meatball","chicken","steak","soup","cheese","olive","cereal","omelette",
+    "egg","ketchup","honey","jam","pie","ice cream","chocolate","dates","wallut","hazelnut","chestnut","tea","milk","fruit juice",
+    "water","fizzy drinks","lemonade"};
 
     static List<string> MeyveSebze = new List<string>() { "apple","apricot","avocado","banana","blackberry","cherry","coconut","fig","grape",
         "kiwi","mango","nectarine","orange","peach","pear","pineapple","quince","strawberry","lemon","melon","watermelon",
