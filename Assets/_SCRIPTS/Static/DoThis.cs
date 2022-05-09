@@ -5,6 +5,14 @@ using System.Collections.Generic;
 
 public class DoThis : MonoBehaviour
 {
+   static int _tempTekrar = 0;
+    public static bool TekrarAsimi(int kacTekrar)
+    {
+        _tempTekrar++;
+        if (kacTekrar == _tempTekrar) return true;
+        return false;
+    }
+    public static void TekrarAsimiSifirla() { _tempTekrar = 0; }
     public static void RemoveAllHandleFromButtons(params Button[] buttons)
     {
         foreach (var item in buttons)

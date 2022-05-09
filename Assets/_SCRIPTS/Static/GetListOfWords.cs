@@ -19,10 +19,10 @@ public class GetListOfWords : MonoBehaviour
     "truck","tractor","tram","yacht","ambulance","bulldozer","caravan","jet","limousine","space shuttle","cable car","cargo ship",
     "submarine","tank","sailboat","hot air balloon"};
     //
-    static List<string> Esya = new List<string>() { "desk","book","chalkboard","computer","clock","pencil","scissors",
+    static List<string> Esya = new List<string>() { "book","chalkboard","computer","clock","pencil","scissors",
     "dictionary","pen","chair","paper","chalk","ruler","map","stapler","pencil sharpener","calculator","garbage can","projector","glue",
     "highlighter","rubber","paper clip","white board","table","compass","protactor","file","ink pen","duster","bag","locker",
-    "notice board", "pencil case","colors",
+    "notice board", "pencil case",
 
     "balloon", "radio"
     };
@@ -31,7 +31,7 @@ public class GetListOfWords : MonoBehaviour
     "swimming","running","taekwondo","ski","boxing","climbing","bowling","cycling","walking","long jump","skipping","surfing","wrestling",
     "parachute","hockey","diving","horse racing","golf","cricket","archery","dart","sailing","high jump","car racing","billiards",
     "fencing","handball","karate","kung fu","ice skating","skateboarding","rugby","heavy lifting"};
-    //
+    
     static List<string> YiyecekIcecek = new List<string>() { "biscuit", "cake", "milkshake", "pizza", "salad", "sandwich", "yoghurt", "coffee",
     "bread","rice","pasta","meat","fish","hamburger","hot-dog","chips","meatball","chicken","steak","soup","cheese","olive","cereal","omelette",
     "egg","ketchup","honey","jam","pie","ice cream","chocolate","dates","wallut","hazelnut","chestnut","tea","milk","fruit juice",
