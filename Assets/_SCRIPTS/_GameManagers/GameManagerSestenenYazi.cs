@@ -86,7 +86,7 @@ public class GameManagerSestenenYazi : MonoBehaviour
 
         //}
         _name = secenekler[Random.Range(0, secenekler.Length)]._name;
-        Invoke("HandleSes", 0.4f);
+       if(!FindObjectOfType<UI_PREMIUM>()) Invoke("HandleSes", 0.4f);
 
     }
 

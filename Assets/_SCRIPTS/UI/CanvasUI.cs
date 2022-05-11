@@ -18,6 +18,7 @@ public class CanvasUI : MonoBehaviour
     [SerializeField] MyButton.durumButton _myBtnAnaMenuDurum, _myBtnAyarlarDurum;
 
     bool _premiumKullandildi = false;
+    bool _premiumGerekYok = false;
     private void Awake()
     {
         instance = this;
@@ -31,6 +32,7 @@ public class CanvasUI : MonoBehaviour
             || TEMP._gidilecekSahne == Sahne.Sayilar)
         {
             _myBtnAyarlar.gameObject.SetActive(false);
+            _premiumGerekYok = true;
         }
         else
         {
@@ -141,13 +143,13 @@ public class CanvasUI : MonoBehaviour
         {
             AYARLAR.PremiumSureKontrol();
             _myBtnAyarlar.SetDurumButton(MyButton.durumButton.basildi);
-            _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumAlinacakBirSonrakiSure);
+            _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumBitmesineKalanSure);
         }
-        else 
+        else if(!_premiumKullandildi)
         {
             _myBtnAyarlar.SetDurumButton(MyButton.durumButton.basilmadi);
             _txtPremium.text = "PREMIUM";
-      
+         if(!_premiumGerekYok)   Instantiate(_goPremium);
             _premiumKullandildi = true;
 
         }

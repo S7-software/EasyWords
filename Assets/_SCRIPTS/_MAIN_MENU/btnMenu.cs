@@ -51,6 +51,7 @@ public class btnMenu : MonoBehaviour
         if (_gidilecekSahne != Sahne.Harfler && _gidilecekSahne != Sahne.Sayilar)
         {
             TEMP._gidilecekSahne = _gidilecekSahne;
+          
             DoThis.GetMyButtonFromScene("istatistik").SetDurumButton(MyButton.durumButton.aktifDegil);
             DoThis.GetMyButtonFromScene("ayarlar").SetDurumButton(MyButton.durumButton.aktifDegil);
             DoThis.GetMyButtonFromScene("cikis").SetDurumButton(MyButton.durumButton.aktifDegil);
@@ -59,6 +60,7 @@ public class btnMenu : MonoBehaviour
         }
         else
         {
+            TEMP._gidilecekSahne = _gidilecekSahne;
             GoToScene.Hangi(_gidilecekSahne);
         }
 

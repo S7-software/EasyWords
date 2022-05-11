@@ -59,13 +59,18 @@ public class AYARLAR : MonoBehaviour
             Save();
             Load();
         }
-        else if (DateTime.Parse(_premiumAlinacakBirSonrakiSure).TimeOfDay <= DateTime.Now.TimeOfDay)
+        else if (DateTime.Parse(_premiumBitmesineKalanSure).TimeOfDay <= DateTime.Now.TimeOfDay&&_premiumGunlukCalisiyor)
+        {
+            _premiumGunlukCalisiyor = false;
+            Save();
+        }
+        else if (DateTime.Parse(_premiumAlinacakBirSonrakiSure).TimeOfDay <= DateTime.Now.TimeOfDay&&!_premiumGunlukAlinabilir)
         {
             _premiumGunlukAlinabilir = true;
             Save();
         }
 
-        
+
     }
     public static void Save()
     {

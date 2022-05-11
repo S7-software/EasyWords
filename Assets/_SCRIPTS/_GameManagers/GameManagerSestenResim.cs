@@ -62,7 +62,7 @@ public class GameManagerSestenResim : MonoBehaviour
         //    item.SetSecenek(GetListOfWords.RasgeleUniq(TEMP._secilenCategorie));
         //}
         _name = secenekResims[Random.Range(0, secenekResims.Length)]._name;
-       Invoke( "HandleSes",0.4f);
+        if (!FindObjectOfType<UI_PREMIUM>()) Invoke( "HandleSes",0.4f);
     }
 
     public void Kontrol(string name, SecenekResim secenekResim)

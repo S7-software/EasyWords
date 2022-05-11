@@ -59,9 +59,16 @@ public class UI_PREMIUM : MonoBehaviour
         }
         else if (_count > 0 && !_premiumGunlukCalisiyor && !_premiumGunlukAlinabilir)
         {
+
             _myBtnPremium.SetDurumButton(MyButton.durumButton.aktifDegil);
             _myButtonAktif = false;
 
+        }
+        else
+        {
+            _myBtnPremium.SetDurumButton(MyButton.durumButton.aktifDegil);
+
+            _myButtonAktif = false;
         }
         AYARLAR.DebugAllData();
 
@@ -97,7 +104,7 @@ public class UI_PREMIUM : MonoBehaviour
         {
             DateTime temp = DateTime.Now.AddMinutes(1);
             AYARLAR._premiumBitmesineKalanSure = temp.TimeOfDay.ToString();
-             temp = DateTime.Now.AddMinutes(0.5f);
+             temp = DateTime.Now.AddMinutes(1.5f);
 
             AYARLAR._premiumAlinacakBirSonrakiSure = temp.TimeOfDay.ToString();
             AYARLAR._premiumGunlukCount--;
