@@ -50,3 +50,6 @@ TagManager:
   - name: Ses-Yazi-Resim
     uniqueID: 3304545665
     locked: 0
+  - name: GECIS
+    uniqueID: 3120078939
+    locked: 0
