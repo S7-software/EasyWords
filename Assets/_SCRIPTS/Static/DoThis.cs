@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System.Collections.Generic;
+using System;
 
 public class DoThis : MonoBehaviour
 {
@@ -40,6 +41,21 @@ public class DoThis : MonoBehaviour
     public static void ContainAdd(string name) { tempKelimeKontrol.Add(name); }
     public static void ContainReset() { tempKelimeKontrol = new List<string>(); }
 
+    public static string GeriSayimGunSonu()
+    {
+        string _sureKalanGun;
 
+        _sureKalanGun = ((DateTime.Parse("23:59:59") - DateTime.Now.TimeOfDay).TimeOfDay).ToString().Substring(0, 8);
+        return _sureKalanGun;
+    }
+    public static string GeriSayimFrom(string surePreBitis)
+    {
+        string _sureKalanGun;
+
+        _sureKalanGun = ((DateTime.Parse(surePreBitis) - DateTime.Now.TimeOfDay).TimeOfDay).ToString().Substring(0, 8);
+
+        return _sureKalanGun;
+    }
+   
 
 }

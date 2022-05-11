@@ -18,6 +18,7 @@ public class CanvasUIMainMenu : MonoBehaviour
     bool _isStatOpen = false;
     private void Awake()
     {
+        AYARLAR.Load();//INTRO
         instance = this;
         _goStats.SetActive(false);
         _statButton.SetIcon(_iconsOfStat[0]);

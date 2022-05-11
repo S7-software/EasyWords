@@ -11,21 +11,41 @@ public class CanvasUI : MonoBehaviour
     [SerializeField] [Range(0f, 3f)] float _delayCikis;
     [SerializeField] Sahne _sahneTekrar;
     [SerializeField] [Range(0f, 3f)] float _delayTekrar;
-    [SerializeField] TMP_Text _txtHaftaYanlis, _txtHaftaDogru, _txtGunlukYanlis, _txtGunlukDogru, _txtHeader, _txtWeek, _txtDay;
+    [SerializeField] TMP_Text _txtHaftaYanlis, _txtHaftaDogru, _txtGunlukYanlis, _txtGunlukDogru, _txtHeader, _txtWeek, _txtDay, _txtPremium;
     int _countHaftaYanlis, _countHaftaDogru, _countGunlukYanis, _countGunlukDogru;
-    [SerializeField] GameObject _goHeader;
+    [SerializeField] GameObject _goHeader,_goPremium;
     [SerializeField] MyButton _myBtnAnaMenu, _myBtnAyarlar;
     [SerializeField] MyButton.durumButton _myBtnAnaMenuDurum, _myBtnAyarlarDurum;
+
+    bool _premiumKullandildi = false;
     private void Awake()
     {
         instance = this;
+        SetPremiumButton();
         
     }
+
+    private void SetPremiumButton()
+    {
+      if(AYARLAR._premiumVar || TEMP._secilenCategorie == Categories.Karisik || TEMP._gidilecekSahne == Sahne.Harfler
+            || TEMP._gidilecekSahne == Sahne.Sayilar)
+        {
+            _myBtnAyarlar.gameObject.SetActive(false);
+        }
+        else
+        {
+        }
+    }
+
     private void Start()
     {
         SetButtonsDurum();
     }
 
+    private void Update()
+    {
+        PremiumButtonUpdate();
+    }
     IEnumerator HandleCikis(float delayCikis, Sahne sahneCikis)
     {
         yield return new WaitForSeconds(delayCikis);
@@ -111,5 +131,36 @@ public class CanvasUI : MonoBehaviour
     {
         _myBtnAnaMenu.SetDurumButton(_myBtnAnaMenuDurum);
         _myBtnAyarlar.SetDurumButton(_myBtnAyarlarDurum);
+    }
+
+    void PremiumButtonUpdate()
+    {
+        if (AYARLAR._premiumVar) return;
+        if (_premiumKullandildi) return;
+        if (AYARLAR._premiumGunlukCalisiyor)
+        {
+            AYARLAR.PremiumSureKontrol();
+            _myBtnAyarlar.SetDurumButton(MyButton.durumButton.basildi);
+            _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumAlinacakBirSonrakiSure);
+        }
+        else 
+        {
+            _myBtnAyarlar.SetDurumButton(MyButton.durumButton.basilmadi);
+            _txtPremium.text = "PREMIUM";
+      
+            _premiumKullandildi = true;
+
+        }
+    }
+    public void SetSureliPremium(bool alindi)
+    {
+        if (alindi) { 
+        _myBtnAyarlar.SetDurumButton(MyButton.durumButton.basildi);
+            _premiumKullandildi = false;
+        }
+        else
+        {
+
+        }
     }
 }
