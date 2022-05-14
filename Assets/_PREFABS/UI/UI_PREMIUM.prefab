@@ -520,6 +520,7 @@ MonoBehaviour:
   _delayYokEt: 0.4
   _myBtnPremium: {fileID: 4333891958984082146}
   _txtPremium: {fileID: 6688982979118456727}
+  _txtHeader: {fileID: 6688982977781967250}
 --- !u!1001 &3444130573092394353
 PrefabInstance:
   m_ObjectHideFlags: 0

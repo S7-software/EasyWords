@@ -47,6 +47,7 @@ public class MyButton : MonoBehaviour
     }
     public void SetDurumButton(durumButton durum)
     {
+        _durum = durum;
         _imgIcon.color= (durum == durumButton.aktifDegil)?new Color(_colorIcon.r,_colorIcon.g,_colorIcon.b,0.5f):_colorIcon;
         _imgBtn.sprite = _sptsOfButton[((int)durum)];
         _konum.transform.localPosition = durum == durumButton.basildi ? _konumV3 : Vector3.zero;
@@ -60,5 +61,6 @@ public class MyButton : MonoBehaviour
         _konum.transform.localPosition = dogru ? _konumV3 : Vector3.zero;
 
     }
+    public bool GetDurumButtonBasilabilir() { return _durum==durumButton.basilmadi; }
 
 }

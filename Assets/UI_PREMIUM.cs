@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
+using UnityEngine.SceneManagement;
 
 public class UI_PREMIUM : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class UI_PREMIUM : MonoBehaviour
     [SerializeField] float _delayYokEt = 0.4f;
     [Header("Tanimlanacaklar")]
     [SerializeField] MyButton _myBtnPremium;
-    [SerializeField] TMP_Text _txtPremium;
+    [SerializeField] TMP_Text _txtPremium,_txtHeader;
 
     int _count;
     bool _reklamVar;
@@ -26,9 +27,10 @@ public class UI_PREMIUM : MonoBehaviour
         AYARLAR.PremiumSureKontrol();
         AYARLAR.DebugAllData();
 
-        if (TEMP._gidilecekSahne == Sahne.Harfler || TEMP._gidilecekSahne == Sahne.Sayilar ||
-            TEMP._secilenCategorie == Categories.Karisik || AYARLAR._premiumVar|| AYARLAR._premiumGunlukCalisiyor)
-        { Destroy(gameObject);
+        if( (TEMP._gidilecekSahne == Sahne.Harfler || TEMP._gidilecekSahne == Sahne.Sayilar ||
+            TEMP._secilenCategorie == Categories.Karisik || AYARLAR._premiumVar||AYARLAR._premiumGunlukCalisiyor)&&SceneManager.GetActiveScene().name!=Sahne.MainMenu.ToString())
+        {
+            Destroy(gameObject);
         }
     }
     private void Start()
@@ -54,8 +56,12 @@ public class UI_PREMIUM : MonoBehaviour
 
         if (_count > 0 && !_premiumGunlukCalisiyor&&_premiumGunlukAlinabilir)
         {
+            _myButtonAktif = true;
             string ads = _reklamVar ? "AD for Premium" : "Premium";
             _txtPremium.text = $"{ads} ({_count})";
+            _txtPremium.color = Color.green;
+
+            _myBtnPremium.SetDurumButton(MyButton.durumButton.basilmadi);
         }
         else if (_count > 0 && !_premiumGunlukCalisiyor && !_premiumGunlukAlinabilir)
         {
@@ -78,18 +84,34 @@ public class UI_PREMIUM : MonoBehaviour
 
         if (_myButtonAktif) return;
 
-        if (_count <= 0)
+        if (AYARLAR._premiumGunlukCount <= 0)
         {
             _txtPremium.text = DoThis.GeriSayimGunSonu();
+
+            if (DateTime.Parse("23:46:59") < DateTime.Parse(_txtPremium.text)) IlkAyar();
         }
         else
         {
-            _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumAlinacakBirSonrakiSure);
+            if (AYARLAR._premiumGunlukCalisiyor)
+            {
+                _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumBitmesineKalanSure);
+                _txtPremium.color = Color.green;
+            }
+            else {
+                _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumAlinacakBirSonrakiSure);
+                _txtPremium.color = Color.yellow;
+
+            }
+
+            if (AYARLAR._premiumGunlukCalisiyor) _txtHeader.text = "PREMIUM ON"; else _txtHeader.text = "PREMIUM OFF";
+            if (DateTime.Parse("23:46:59") < DateTime.Parse(_txtPremium.text)) IlkAyar();
         }
         AYARLAR.PremiumSureKontrol();
         if (AYARLAR._premiumGunlukCount == 5) { IlkAyar(); }
         
     }
+
+   
     public void EvetntMainMenu()
     {
         StartCoroutine(AnaMenuyeGit(_delay));
@@ -102,9 +124,9 @@ public class UI_PREMIUM : MonoBehaviour
         if (!_myButtonAktif) return;
         if (_reklamVar)
         {
-            DateTime temp = DateTime.Now.AddMinutes(1);
+            DateTime temp = DateTime.Now.AddMinutes(0.15f);
             AYARLAR._premiumBitmesineKalanSure = temp.TimeOfDay.ToString();
-             temp = DateTime.Now.AddMinutes(1.5f);
+             temp = DateTime.Now.AddMinutes(0.25f);
 
             AYARLAR._premiumAlinacakBirSonrakiSure = temp.TimeOfDay.ToString();
             AYARLAR._premiumGunlukCount--;
@@ -112,7 +134,8 @@ public class UI_PREMIUM : MonoBehaviour
             AYARLAR._premiumGunlukCalisiyor = true;
             AYARLAR._premiumGunlukAlinabilir = false;
             AYARLAR.Save();
-            CanvasUI.instance.SetSureliPremium(true);
+          if(  CanvasUI.instance) CanvasUI.instance.SetSureliPremium(true);
+          if(  DoThis.GetMyButtonFromScene("premium")) DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.basildi);
             Invoke(nameof(YokEt), _delayYokEt);
         }else if (_reklamVar)
         {
