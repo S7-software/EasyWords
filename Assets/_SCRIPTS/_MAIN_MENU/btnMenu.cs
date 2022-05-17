@@ -51,12 +51,12 @@ public class btnMenu : MonoBehaviour
         if (_gidilecekSahne != Sahne.Harfler && _gidilecekSahne != Sahne.Sayilar)
         {
             TEMP._gidilecekSahne = _gidilecekSahne;
-          
-            DoThis.GetMyButtonFromScene("istatistik").SetDurumButton(MyButton.durumButton.aktifDegil);
-            DoThis.GetMyButtonFromScene("ayarlar").SetDurumButton(MyButton.durumButton.aktifDegil);
-            DoThis.GetMyButtonFromScene("cikis").SetDurumButton(MyButton.durumButton.aktifDegil);
-            DoThis.GetMyButtonFromScene("satinalma").SetDurumButton(MyButton.durumButton.aktifDegil);
-            DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.aktifDegil);
+
+            if (DoThis.GetMyButtonFromScene("istatistik")) DoThis.GetMyButtonFromScene("istatistik").SetDurumButton(MyButton.durumButton.aktifDegil);
+            if (DoThis.GetMyButtonFromScene("ayarlar")) DoThis.GetMyButtonFromScene("ayarlar").SetDurumButton(MyButton.durumButton.aktifDegil);
+            if (DoThis.GetMyButtonFromScene("cikis")) DoThis.GetMyButtonFromScene("cikis").SetDurumButton(MyButton.durumButton.aktifDegil);
+            if (DoThis.GetMyButtonFromScene("satinalma")) DoThis.GetMyButtonFromScene("satinalma").SetDurumButton(MyButton.durumButton.aktifDegil);
+        if (DoThis.GetMyButtonFromScene("premium"))    DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.aktifDegil);
             Instantiate(CanvasUIMainMenu.instance._menuCategorie);
         }
         else

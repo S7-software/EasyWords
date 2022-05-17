@@ -6,7 +6,9 @@ public class PREMIUM : MonoBehaviour
 {
 
 
-    public static bool GetPremiumVar() { return PlayerPrefs.GetInt("premiumVar", 0) == 1 ? true : false; }
+    public static bool GetPremiumVar() {
+        return PlayerPrefs.GetInt("premiumVar", 0) == 1 ? true : false;
+    }
     public static void SetPremiumVar(bool deger) { PlayerPrefs.SetInt("premiumVar", deger ? 1 : 0); }
 
     public static bool GetPremiumGunlukCalisiyor() { return PlayerPrefs.GetInt("premiumgunluk calisiyor", 0) == 1 ? true : false; }
