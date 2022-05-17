@@ -16,14 +16,14 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     }
     void Start()
     {
-        if (!AYARLAR._reklamVar) return;
+        if (!AYARLAR.GetReklamVar()) return;
         Advertisement.Initialize(gameId, testMode);
 
 
     }
     public void ShowOdul()
     {
-        if (!AYARLAR._reklamVar)
+        if (!AYARLAR.GetReklamVar())
         {
             return;
         }
@@ -31,20 +31,20 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     }
     public void ShowGecis()
     {
-        if (!AYARLAR._reklamVar) return;
+        if (!AYARLAR.GetReklamVar()) return;
 
         Advertisement.Show(placementIdGecis, instance);
     }
     public void ShowBanner()
     {
-        if (!AYARLAR._reklamVar) return;
+        if (!AYARLAR.GetReklamVar()) return;
 
         StartCoroutine(ShowBannerWhenReady());
     }
 
     public void CloseBanner()
     {
-        if (!AYARLAR._reklamVar) return;
+        if (!AYARLAR.GetReklamVar()) return;
 
         Advertisement.Banner.Hide();
     }

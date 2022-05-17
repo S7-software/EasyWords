@@ -21,7 +21,7 @@ public class btnMenuKategori : MonoBehaviour
         //_isActive = AYARLAR._premiumVar||_categorie==Categories.Karisik;
         StartButton();
     }
-
+    
     private void StartButton()
     {
         _imgBtn.sprite = _sptsOfBtn[0];

@@ -48,11 +48,11 @@ public class DoThis : MonoBehaviour
         _sureKalanGun = ((DateTime.Parse("23:59:59") - DateTime.Now.TimeOfDay).TimeOfDay).ToString().Substring(0, 8);
         return _sureKalanGun;
     }
-    public static string GeriSayimFrom(string surePreBitis)
+    public static string GeriSayimFrom(DateTime surePreBitis)
     {
         string _sureKalanGun;
 
-        _sureKalanGun = ((DateTime.Parse(surePreBitis) - DateTime.Now.TimeOfDay).TimeOfDay).ToString().Substring(0, 8);
+        _sureKalanGun = (surePreBitis.TimeOfDay - DateTime.Now.TimeOfDay).ToString().Substring(0, 8);
 
         return _sureKalanGun;
     }

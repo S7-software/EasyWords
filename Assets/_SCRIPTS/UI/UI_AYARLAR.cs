@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UI_AYARLAR : MonoBehaviour
 {
-    [SerializeField] MyButton _btnSesOn, _btnSesOff, _btnReset,_btnResetNo;
+    [SerializeField] MyButton _btnSesOn, _btnSesOff, _btnReset, _btnResetNo;
     [SerializeField] Image[] _imgsSesIcon;
     [SerializeField] Sprite[] _sptsSesIcon;
     [SerializeField] GameObject _goReset;
@@ -14,8 +14,8 @@ public class UI_AYARLAR : MonoBehaviour
     private void Awake()
     {
         // _isSesOn = Kayit.GetSesAcik();
-        _isSesOn = AYARLAR._sesAcik;
-       
+        _isSesOn = AYARLAR.GetSesAcik();
+
     }
     private void Start()
     {
@@ -30,7 +30,7 @@ public class UI_AYARLAR : MonoBehaviour
         _isSesOn = !_isSesOn;
 
         //Kayit.SetSesAcik(_isSesOn);
-        AYARLAR._sesAcik = _isSesOn;
+        AYARLAR.SetSesAcik( _isSesOn);
         if (_isSesOn) SoundBox.instance.PlayOneShot(NamesOfSound.bas);
         SesAyarla();
     }
@@ -39,15 +39,26 @@ public class UI_AYARLAR : MonoBehaviour
 
         GameObject.Find("myBtnAyarlar").GetComponent<MyButton>().SetDurumButton(MyButton.durumButton.basilmadi);
         Destroy(gameObject);
-       
+
     }
 
     public void EventReset()
     {
         _goReset.SetActive(true);
     }
-    public void EventResetYes() { }
-    public void EventResetNo() {
+    public void EventResetYes()
+    {
+        AYARLAR.Default();
+        PREMIUM.Default();
+
+        Invoke(nameof(SahneyeGit), 0.4f);
+    }
+    void SahneyeGit()
+    {
+        GoToScene.Hangi(Sahne.MainMenu);
+    }
+    public void EventResetNo()
+    {
         _goReset.SetActive(false);
         _btnReset.SetDurumButton(MyButton.durumButton.basilmadi);
         _btnResetNo.SetDurumButton(MyButton.durumButton.basilmadi);
@@ -61,13 +72,13 @@ public class UI_AYARLAR : MonoBehaviour
         {
             _btnSesOff._isActive = true; ;
             _btnSesOff.SetDurumButton(MyButton.durumButton.basilmadi);
-           
+
             _btnSesOn.SetDurumButton(MyButton.durumButton.basildi);
             _btnSesOn._isActive = false; ;
         }
         else
         {
-            
+
             _btnSesOn.SetDurumButton(MyButton.durumButton.basilmadi);
             _btnSesOn._isActive = true; ;
             _btnSesOff.SetDurumButton(MyButton.durumButton.basildi);
@@ -76,6 +87,6 @@ public class UI_AYARLAR : MonoBehaviour
 
     }
 
-    
-    
+
+
 }

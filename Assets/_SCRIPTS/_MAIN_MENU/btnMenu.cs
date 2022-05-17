@@ -56,6 +56,7 @@ public class btnMenu : MonoBehaviour
             DoThis.GetMyButtonFromScene("ayarlar").SetDurumButton(MyButton.durumButton.aktifDegil);
             DoThis.GetMyButtonFromScene("cikis").SetDurumButton(MyButton.durumButton.aktifDegil);
             DoThis.GetMyButtonFromScene("satinalma").SetDurumButton(MyButton.durumButton.aktifDegil);
+            DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.aktifDegil);
             Instantiate(CanvasUIMainMenu.instance._menuCategorie);
         }
         else

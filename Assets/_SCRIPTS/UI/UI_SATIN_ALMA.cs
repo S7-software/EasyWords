@@ -30,7 +30,7 @@ public class UI_SATIN_ALMA : MonoBehaviour
     public void EvetnAds(bool basarili)
     {
         SetAdsDurum(basarili);
-        AYARLAR._reklamVar = !basarili;
+        AYARLAR.SetReklamVar(  !basarili);
     }
     public void EventPremium()
     {
@@ -38,7 +38,7 @@ public class UI_SATIN_ALMA : MonoBehaviour
     public void EventPremium(bool basarili)
     {
         SetPremiumDurum(basarili);
-        AYARLAR._premiumVar = basarili;
+        PREMIUM.SetPremiumVar( basarili);
     }
     public void EventAdsPremium()
     {
@@ -46,7 +46,7 @@ public class UI_SATIN_ALMA : MonoBehaviour
     public void EventAdsPremium(bool basarili)
     {
         SetPremiumDurum(basarili);
-        AYARLAR._premiumVar = basarili;
+        PREMIUM.SetPremiumVar(basarili);
     }
     public void EventExit()
     {

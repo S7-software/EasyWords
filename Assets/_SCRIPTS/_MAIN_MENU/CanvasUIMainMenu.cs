@@ -9,7 +9,7 @@ public class CanvasUIMainMenu : MonoBehaviour
 {
     public static CanvasUIMainMenu instance;
     [SerializeField] [Range(0f, 3f)] float _delay=0f;
-    [SerializeField] GameObject _goStats,_goAyarlar,_goSatinAlma,_goPremium;
+    [SerializeField] GameObject _goStats;
     [SerializeField] CardOfStatus _resimdenYazi, _sestenYazi, _sestenResim, _yazidanResim, _besX5,_hepsi;
     [Header("Stat Button")]
     
@@ -19,9 +19,9 @@ public class CanvasUIMainMenu : MonoBehaviour
     [SerializeField] Sprite[] _iconsOfStat;
     public GameObject _menuCategorie;
     bool _isStatOpen = false;
+  public  bool _premiumButtonAktif = true;
     private void Awake()
     {
-        AYARLAR.Load();//INTRO
         TEMP._gidilecekSahne = Sahne.MainMenu;
         instance = this;
         _goStats.SetActive(false);
@@ -30,40 +30,32 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        SetButtonPremium();
-
+        
+    
+            SetButtonPremium();
     }
-    private void Update()
+    private void LateUpdate()
     {
-          if(!_myBtnPremium.GetDurumButtonBasilabilir())
+          if(!_myBtnPremium.GetDurumButtonBasilabilir()&& !_premiumButtonAktif
+            )
         {
-            if (AYARLAR._premiumGunlukCalisiyor)
+            if (PREMIUM.GetPremiumGunlukCalisiyor())
             {
-                _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumBitmesineKalanSure);
+                _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
                 _txtPremium.color = Color.green;
-                AYARLAR.PremiumSureKontrol();
+                PREMIUM.PremiumSureKontrol();
             }
-            else if (!AYARLAR._premiumGunlukAlinabilir)
+            else if (!PREMIUM.GetPremiumGunlukAlinabilir())
             {
-                _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumAlinacakBirSonrakiSure);
+                _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumAlinacakBirSonrakiSure());
                 _txtPremium.color = Color.yellow;
-                AYARLAR.PremiumSureKontrol();
+                PREMIUM.PremiumSureKontrol();
 
             }
-            else
+            else if(PREMIUM.GetPremiumGunlukAlinabilir())
             {
-                try
-                {
-                    if (DateTime.Parse("23:46:59") < DateTime.Parse(_txtPremium.text))
-                    {
-                        _myBtnPremium.SetDurumButton(MyButton.durumButton.basilmadi);
-                        SetButtonPremium();
-                    }
-                }
-                catch (Exception )
-                {
-
-                }
+                _premiumButtonAktif = true;
+                SetButtonPremium();
                 
             }
         }
@@ -71,32 +63,35 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     void SetButtonPremium()
     {
-        if (AYARLAR._premiumVar)
+        if (PREMIUM.GetPremiumVar())
         {
             _myBtnPremium.gameObject.SetActive(false); return;
         }
-       
-        if (AYARLAR._premiumGunlukCalisiyor)
+
+        if (PREMIUM.GetPremiumGunlukCalisiyor()|| !PREMIUM.GetPremiumGunlukAlinabilir())
         {
             _myBtnPremium.SetDurumButton(MyButton.durumButton.basildi);
         }
-        else if(AYARLAR._premiumGunlukAlinabilir)
+        else if(PREMIUM.GetPremiumGunlukAlinabilir())
         {
-            _txtPremium.text = "PREMIUM\n("+AYARLAR._premiumGunlukCount+")";
+            _txtPremium.text = "PREMIUM\n("+ PREMIUM.GetPremiumGunlukCount()+")";
             _txtPremium.color = Color.yellow;
             _myBtnPremium.SetDurumButton(MyButton.durumButton.basilmadi);
         }
-        else
+        else 
         {
             _myBtnPremium.SetDurumButton(MyButton.durumButton.basildi);
+           
+
         }
      
     }
 
     public void EventPremium()
     {
-
-        Instantiate(_goPremium);
+        if (FindObjectOfType<btnMenuKategori>()) return;
+        if (PREMIUM.GetPremiumGunlukCount() <= 0) return;
+        Instantiate(GetObje.Hangi(GetObje.objeName.UI_PREMIUM));
     }
     public void HandleCikis()
     {
@@ -114,13 +109,13 @@ public class CanvasUIMainMenu : MonoBehaviour
     public void EventAyarlar()
     {
         if (FindObjectOfType<btnMenuKategori>()) return;
-        Instantiate(_goAyarlar);
+        Instantiate(GetObje.Hangi(GetObje.objeName.UI_AYARLAR));
     }
 
     public void EventSatinAlma()
     {
         if (FindObjectOfType<btnMenuKategori>()) return;
-        Instantiate(_goSatinAlma);
+        Instantiate(GetObje.Hangi(GetObje.objeName.UI_SATIN_ALMA));
     }
     public void EventUpStat()
     {

@@ -21,7 +21,6 @@ public class TEST : MonoBehaviour
         btnIleri.onClick.AddListener(() => HandleButton(true));
         Show();
         //JsonOrnek2();
-        AYARLAR.Load();
     }
 
     void HandleButton(bool ileri)

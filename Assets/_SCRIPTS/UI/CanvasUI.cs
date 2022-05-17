@@ -28,7 +28,7 @@ public class CanvasUI : MonoBehaviour
 
     private void SetPremiumButton()
     {
-      if(AYARLAR._premiumVar || TEMP._secilenCategorie == Categories.Karisik || TEMP._gidilecekSahne == Sahne.Harfler
+      if(PREMIUM.GetPremiumVar() || TEMP._secilenCategorie == Categories.Karisik || TEMP._gidilecekSahne == Sahne.Harfler
             || TEMP._gidilecekSahne == Sahne.Sayilar)
         {
             _myBtnAyarlar.gameObject.SetActive(false);
@@ -137,13 +137,13 @@ public class CanvasUI : MonoBehaviour
 
     void PremiumButtonUpdate()
     {
-        if (AYARLAR._premiumVar) return;
+        if (PREMIUM.GetPremiumVar()) return;
         if (_premiumKullandildi) return;
-        if (AYARLAR._premiumGunlukCalisiyor)
+        if (PREMIUM.GetPremiumGunlukCalisiyor())
         {
-            AYARLAR.PremiumSureKontrol();
+            PREMIUM.PremiumSureKontrol();
             _myBtnAyarlar.SetDurumButton(MyButton.durumButton.basildi);
-            _txtPremium.text = DoThis.GeriSayimFrom(AYARLAR._premiumBitmesineKalanSure);
+            _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
         }
         else if(!_premiumKullandildi)
         {
