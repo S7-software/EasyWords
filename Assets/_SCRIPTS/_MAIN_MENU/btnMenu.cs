@@ -20,7 +20,7 @@ public class btnMenu : MonoBehaviour
         StartButton();
     }
 
-    private void StartButton()
+    public void StartButton()
     {
         _imgBtn.sprite = _sptsOfBtn[0];
         _imgBtn.color = _colors[0];

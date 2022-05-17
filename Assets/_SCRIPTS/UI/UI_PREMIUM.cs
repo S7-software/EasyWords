@@ -12,7 +12,7 @@ public class UI_PREMIUM : MonoBehaviour
     [SerializeField] float _delayYokEt = 0.4f;
     [Header("Tanimlanacaklar")]
     [SerializeField] MyButton _myBtnPremium;
-    [SerializeField] TMP_Text _txtPremium,_txtHeader;
+    [SerializeField] TMP_Text _txtPremium, _txtHeader;
 
     int _count;
     bool _reklamVar;
@@ -24,16 +24,16 @@ public class UI_PREMIUM : MonoBehaviour
     {
         PREMIUM.PremiumSureKontrol();
 
-        if( (TEMP._gidilecekSahne == Sahne.Harfler || TEMP._gidilecekSahne == Sahne.Sayilar ||
-            TEMP._secilenCategorie == Categories.Karisik || PREMIUM.GetPremiumVar()|| PREMIUM.GetPremiumGunlukCalisiyor())
-            &&SceneManager.GetActiveScene().name!=Sahne.MainMenu.ToString())
+        if ((TEMP._gidilecekSahne == Sahne.Harfler || TEMP._gidilecekSahne == Sahne.Sayilar ||
+            TEMP._secilenCategorie == Categories.Karisik || PREMIUM.GetPremiumVar() || PREMIUM.GetPremiumGunlukCalisiyor())
+            && SceneManager.GetActiveScene().name != Sahne.MainMenu.ToString())
         {
             Destroy(gameObject);
         }
     }
     private void Start()
     {
-        
+
         IlkAyar();
     }
     private void IlkAyar()
@@ -42,16 +42,16 @@ public class UI_PREMIUM : MonoBehaviour
         _count = PREMIUM.GetPremiumGunlukCount();
         _reklamVar = AYARLAR.GetReklamVar();
         _premiumGunlukCalisiyor = PREMIUM.GetPremiumGunlukCalisiyor();
-        _premiumGunlukAlinabilir= PREMIUM.GetPremiumGunlukAlinabilir();
+        _premiumGunlukAlinabilir = PREMIUM.GetPremiumGunlukAlinabilir();
 
-    
+
         if (_premiumGunlukCalisiyor)
         {
             _myButtonAktif = false;
             _myBtnPremium.SetDurumButton(MyButton.durumButton.aktifDegil);
         }
 
-       else if (_count > 0 && !_premiumGunlukCalisiyor&&_premiumGunlukAlinabilir)
+        else if (_count > 0 && !_premiumGunlukCalisiyor && _premiumGunlukAlinabilir)
         {
             _myButtonAktif = true;
             string ads = _reklamVar ? "AD for Premium" : "Premium";
@@ -90,10 +90,10 @@ public class UI_PREMIUM : MonoBehaviour
         {
             if (PREMIUM.GetPremiumGunlukCalisiyor())
             {
-                _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure()) ;
+                _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
                 _txtPremium.color = Color.green;
             }
-            else if(!PREMIUM.GetPremiumGunlukCalisiyor()&& !PREMIUM.GetPremiumGunlukAlinabilir())
+            else if (!PREMIUM.GetPremiumGunlukCalisiyor() && !PREMIUM.GetPremiumGunlukAlinabilir())
             {
                 _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumAlinacakBirSonrakiSure());
                 _txtPremium.color = Color.yellow;
@@ -106,7 +106,7 @@ public class UI_PREMIUM : MonoBehaviour
             }
 
             if (PREMIUM.GetPremiumGunlukCalisiyor()) _txtHeader.text = "PREMIUM ON"; else _txtHeader.text = "PREMIUM OFF";
-            
+
         }
 
         PREMIUM.PremiumSureKontrol();
@@ -115,10 +115,15 @@ public class UI_PREMIUM : MonoBehaviour
 
     }
 
-   
+
     public void EvetntMainMenu()
     {
-        if (DoThis.GetMyButtonFromScene("premium")) Destroy(gameObject); else StartCoroutine(AnaMenuyeGit(_delay));
+        if (DoThis.GetMyButtonFromScene("premium"))
+        {
+            CanvasUIMainMenu.instance.SetButtonPremium();
+            Destroy(gameObject);
+        }
+        else StartCoroutine(AnaMenuyeGit(_delay));
     }
 
     public void EvetnPremium()
@@ -127,26 +132,30 @@ public class UI_PREMIUM : MonoBehaviour
         if (_reklamVar)
         {
             DateTime temp = DateTime.Now.AddMinutes(0.15f);
-            PREMIUM.SetPremiumBitmesineKalanSure(  temp);
-             temp = DateTime.Now.AddMinutes(0.25f);
+            PREMIUM.SetPremiumBitmesineKalanSure(temp);
+            temp = DateTime.Now.AddMinutes(0.25f);
 
             PREMIUM.SetPremiumAlinacakBirSonrakiSure(temp);
             int tempInt = PREMIUM.GetPremiumGunlukCount();
             tempInt--;
             PREMIUM.SetPremiumGunlukCount(tempInt);
             _count = tempInt;
-            PREMIUM.SetPremiumGunlukCalisiyor( true);
-            PREMIUM.SetPremiumGunlukAlinabilir( false);
+            PREMIUM.SetPremiumGunlukCalisiyor(true);
+            PREMIUM.SetPremiumGunlukAlinabilir(false);
             PREMIUM.DebugAll();
-            if (  CanvasUI.instance) CanvasUI.instance.SetSureliPremium(true);
-          if(  DoThis.GetMyButtonFromScene("premium")) DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.basildi);
-            if (CanvasUIMainMenu.instance) CanvasUIMainMenu.instance._premiumButtonAktif = false;
+            if (CanvasUI.instance) CanvasUI.instance.SetSureliPremium(true);
+            if (DoThis.GetMyButtonFromScene("premium")) DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.basildi);
+            if (CanvasUIMainMenu.instance) {
+                CanvasUIMainMenu.instance._premiumButtonAktif = false;
+                CanvasUIMainMenu.instance._ilkGecisPremiumdan = false;
+            }
             Invoke(nameof(YokEt), _delayYokEt);
-        }else if (_reklamVar)
+        }
+        else if (_reklamVar)
         {
             //reklam
         }
-       
+
 
     }
 
@@ -158,9 +167,9 @@ public class UI_PREMIUM : MonoBehaviour
     }
     IEnumerator AnaMenuyeGit(float delay)
     {
-        
+
         yield return new WaitForSeconds(delay);
         GoToScene.Hangi(Sahne.MainMenu);
     }
-  
+
 }

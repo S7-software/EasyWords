@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,17 +16,23 @@ public class btnMenuKategori : MonoBehaviour
     [SerializeField] Color[] _colors;
     [SerializeField] Vector3 _konumDonwResim;
     [SerializeField] [Range(0f, 3f)] float _delay;
+    [SerializeField] TMP_Text _txtPre;
 
     private void Awake()
     {
-        //_isActive = AYARLAR._premiumVar||_categorie==Categories.Karisik;
+        _isActive = PREMIUM.GetPremiumVar()||_categorie==Categories.Karisik|| PREMIUM.GetPremiumGunlukCalisiyor();
+        
+    }
+    private void Start()
+    {
         StartButton();
     }
-    
+
     private void StartButton()
     {
         _imgBtn.sprite = _sptsOfBtn[0];
         _imgBtn.color = _isActive ? _colors[0] : _colors[1];
+        _txtPre.enabled = !_isActive;
         SetIcon(_isActive,_imgIcon,_imgIconGolge);
         _imgGolge.enabled = _isActive;
         _goBtnResim.transform.localPosition = Vector3.zero;
@@ -69,5 +76,7 @@ public class btnMenuKategori : MonoBehaviour
         
         GoToScene.Hangi(TEMP._gidilecekSahne);
     }
+
+   
 
 }

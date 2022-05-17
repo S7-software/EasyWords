@@ -20,6 +20,7 @@ public class CanvasUIMainMenu : MonoBehaviour
     public GameObject _menuCategorie;
     bool _isStatOpen = false;
     public bool _premiumButtonAktif = true;
+   public bool _ilkGecisPremiumdan = false;
     private void Awake()
     {
         TEMP._gidilecekSahne = Sahne.MainMenu;
@@ -45,6 +46,11 @@ public class CanvasUIMainMenu : MonoBehaviour
         }
         else if (!PREMIUM.GetPremiumGunlukAlinabilir()&& PREMIUM.GetPremiumGunlukCount() > 0)
         {
+            if (!_ilkGecisPremiumdan)
+            {
+                _ilkGecisPremiumdan = true;
+                if (FindObjectOfType<UI_KATEGORI>()) FindObjectOfType<UI_KATEGORI>().HandleX();
+            }
             _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumAlinacakBirSonrakiSure());
             _txtPremium.color = Color.yellow;
             PREMIUM.PremiumSureKontrol();
@@ -54,6 +60,7 @@ public class CanvasUIMainMenu : MonoBehaviour
         {
             _premiumButtonAktif = true;
             SetButtonPremium();
+            if (FindObjectOfType<UI_KATEGORI>()) FindObjectOfType<UI_KATEGORI>().HandleX();
 
         }
         else if (PREMIUM.GetPremiumGunlukCount() <= 0)
@@ -66,7 +73,7 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     }
 
-    void SetButtonPremium()
+  public  void SetButtonPremium()
     {
         if (PREMIUM.GetPremiumVar())
         {

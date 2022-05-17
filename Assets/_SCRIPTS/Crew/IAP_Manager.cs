@@ -5,7 +5,7 @@ public class IAP_Manager : MonoBehaviour
 {
     string id_Ads = "com.s7software.easy.words.removeads";
     string id_premium = "com.s7software.easy.premium";
-    string id_AdsPre = "com.s7software.easy.words.adsPre";
+    string id_AdsPre = "com.s7software.easy.words.adspre";
 
     void HandleReklam()
     {
