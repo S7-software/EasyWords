@@ -8,18 +8,18 @@ using UnityEngine.UI;
 public class CanvasUIMainMenu : MonoBehaviour
 {
     public static CanvasUIMainMenu instance;
-    [SerializeField] [Range(0f, 3f)] float _delay=0f;
+    [SerializeField] [Range(0f, 3f)] float _delay = 0f;
     [SerializeField] GameObject _goStats;
-    [SerializeField] CardOfStatus _resimdenYazi, _sestenYazi, _sestenResim, _yazidanResim, _besX5,_hepsi;
+    [SerializeField] CardOfStatus _resimdenYazi, _sestenYazi, _sestenResim, _yazidanResim, _besX5, _hepsi;
     [Header("Stat Button")]
-    
+
     [SerializeField] MyButton _statButton;
     [SerializeField] MyButton _myBtnPremium;
     [SerializeField] TMP_Text _txtPremium;
     [SerializeField] Sprite[] _iconsOfStat;
     public GameObject _menuCategorie;
     bool _isStatOpen = false;
-  public  bool _premiumButtonAktif = true;
+    public bool _premiumButtonAktif = true;
     private void Awake()
     {
         TEMP._gidilecekSahne = Sahne.MainMenu;
@@ -30,35 +30,40 @@ public class CanvasUIMainMenu : MonoBehaviour
 
     private void Start()
     {
-        
-    
-            SetButtonPremium();
+
+
+        SetButtonPremium();
     }
     private void LateUpdate()
     {
-          if(!_myBtnPremium.GetDurumButtonBasilabilir()&& !_premiumButtonAktif
-            )
+        if (_premiumButtonAktif) return;
+        if (PREMIUM.GetPremiumGunlukCalisiyor())
         {
-            if (PREMIUM.GetPremiumGunlukCalisiyor())
-            {
-                _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
-                _txtPremium.color = Color.green;
-                PREMIUM.PremiumSureKontrol();
-            }
-            else if (!PREMIUM.GetPremiumGunlukAlinabilir())
-            {
-                _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumAlinacakBirSonrakiSure());
-                _txtPremium.color = Color.yellow;
-                PREMIUM.PremiumSureKontrol();
-
-            }
-            else if(PREMIUM.GetPremiumGunlukAlinabilir())
-            {
-                _premiumButtonAktif = true;
-                SetButtonPremium();
-                
-            }
+            _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
+            _txtPremium.color = Color.green;
+            PREMIUM.PremiumSureKontrol();
         }
+        else if (!PREMIUM.GetPremiumGunlukAlinabilir()&& PREMIUM.GetPremiumGunlukCount() > 0)
+        {
+            _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumAlinacakBirSonrakiSure());
+            _txtPremium.color = Color.yellow;
+            PREMIUM.PremiumSureKontrol();
+
+        }
+        else if (PREMIUM.GetPremiumGunlukAlinabilir())
+        {
+            _premiumButtonAktif = true;
+            SetButtonPremium();
+
+        }
+        else if (PREMIUM.GetPremiumGunlukCount() <= 0)
+        {
+            _txtPremium.text = DoThis.GeriSayimGunSonu();
+            _txtPremium.color = Color.yellow;
+            PREMIUM.PremiumSureKontrol();
+        }
+       
+
     }
 
     void SetButtonPremium()
@@ -68,23 +73,25 @@ public class CanvasUIMainMenu : MonoBehaviour
             _myBtnPremium.gameObject.SetActive(false); return;
         }
 
-        if (PREMIUM.GetPremiumGunlukCalisiyor()|| !PREMIUM.GetPremiumGunlukAlinabilir())
+        if (PREMIUM.GetPremiumGunlukCalisiyor() || !PREMIUM.GetPremiumGunlukAlinabilir())
         {
             _myBtnPremium.SetDurumButton(MyButton.durumButton.basildi);
+            _premiumButtonAktif = false;
         }
-        else if(PREMIUM.GetPremiumGunlukAlinabilir())
+        else if (PREMIUM.GetPremiumGunlukAlinabilir())
         {
-            _txtPremium.text = "PREMIUM\n("+ PREMIUM.GetPremiumGunlukCount()+")";
+            _premiumButtonAktif = true;
+            _txtPremium.text = "PREMIUM\n(" + PREMIUM.GetPremiumGunlukCount() + ")";
             _txtPremium.color = Color.yellow;
             _myBtnPremium.SetDurumButton(MyButton.durumButton.basilmadi);
         }
-        else 
+        else
         {
-            _myBtnPremium.SetDurumButton(MyButton.durumButton.basildi);
-           
+            //_myBtnPremium.SetDurumButton(MyButton.durumButton.basildi);
+            Debug.Log("else");
 
         }
-     
+
     }
 
     public void EventPremium()
@@ -99,7 +106,7 @@ public class CanvasUIMainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    IEnumerator SahneGecis(float delay,Sahne sahne)
+    IEnumerator SahneGecis(float delay, Sahne sahne)
     {
         yield return new WaitForSeconds(delay);
         GoToScene.Hangi(sahne);
@@ -122,7 +129,7 @@ public class CanvasUIMainMenu : MonoBehaviour
         if (FindObjectOfType<btnMenuKategori>()) return;
         if (_isStatOpen)
         {
-        _statButton.SetIcon(_iconsOfStat[0]);
+            _statButton.SetIcon(_iconsOfStat[0]);
             _statButton.SetDurumButton(MyButton.durumButton.basilmadi);
 
             _goStats.SetActive(false);
@@ -134,7 +141,7 @@ public class CanvasUIMainMenu : MonoBehaviour
             KayitlariCekVeAta();
 
             _goStats.SetActive(true);
-           
+
             _isStatOpen = true;
         }
     }
@@ -142,17 +149,17 @@ public class CanvasUIMainMenu : MonoBehaviour
     {
         AllStatusOfType allStatusOfType = Kayit.GetScore(Sahne.EslestirmeResimdenYazi1x5);
         Ata(allStatusOfType, _resimdenYazi);
-         allStatusOfType = Kayit.GetScore(Sahne.EslestirmeSestenYazi1x5);
+        allStatusOfType = Kayit.GetScore(Sahne.EslestirmeSestenYazi1x5);
         Ata(allStatusOfType, _sestenYazi);
-         allStatusOfType = Kayit.GetScore(Sahne.EslestirmeSestenResim1x5);
+        allStatusOfType = Kayit.GetScore(Sahne.EslestirmeSestenResim1x5);
         Ata(allStatusOfType, _sestenResim);
-         allStatusOfType = Kayit.GetScore(Sahne.EslestirmeYazidanResim1x5);
+        allStatusOfType = Kayit.GetScore(Sahne.EslestirmeYazidanResim1x5);
         Ata(allStatusOfType, _yazidanResim);
         allStatusOfType = Kayit.GetScore(Sahne.Eslestirme5x5);
         Ata(allStatusOfType, _besX5);
         _hepsi.SetCardOfStatus(0, 0, 0, 0, allStatusOfType.ToplamHepsiDogru, allStatusOfType.ToplamHepsiYanlis);
     }
-    void Ata(AllStatusOfType allStatusOfType,CardOfStatus cardOfStatus)
+    void Ata(AllStatusOfType allStatusOfType, CardOfStatus cardOfStatus)
     {
         cardOfStatus.SetCardOfStatus(
             allStatusOfType.GunDogru,

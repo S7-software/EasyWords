@@ -315,6 +315,20 @@ MonoBehaviour:
       m_Height: 80
     m_Scale: 1
     m_AtlasIndex: 0
+  - m_Index: 19
+    m_Metrics:
+      m_Width: 42.59375
+      m_Height: 82.125
+      m_HorizontalBearingX: 3.6875
+      m_HorizontalBearingY: 80.59375
+      m_HorizontalAdvance: 49.96875
+    m_GlyphRect:
+      m_X: 614
+      m_Y: 10
+      m_Width: 44
+      m_Height: 83
+    m_Scale: 1
+    m_AtlasIndex: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 8230
@@ -363,6 +377,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 75
     m_GlyphIndex: 46
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 48
+    m_GlyphIndex: 19
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: 28256370963634744}
@@ -418,6 +436,10 @@ MonoBehaviour:
     m_Y: 0
     m_Width: 68
     m_Height: 99
+  - m_X: 604
+    m_Y: 0
+    m_Width: 63
+    m_Height: 102
   m_FreeGlyphRects:
   - m_X: 0
     m_Y: 133
@@ -435,17 +457,21 @@ MonoBehaviour:
     m_Y: 132
     m_Width: 961
     m_Height: 891
-  - m_X: 125
-    m_Y: 99
-    m_Width: 898
-    m_Height: 924
   - m_X: 312
     m_Y: 67
     m_Width: 34
     m_Height: 956
-  - m_X: 604
+  - m_X: 125
+    m_Y: 102
+    m_Width: 898
+    m_Height: 921
+  - m_X: 125
+    m_Y: 99
+    m_Width: 479
+    m_Height: 924
+  - m_X: 667
     m_Y: 0
-    m_Width: 419
+    m_Width: 356
     m_Height: 1023
   m_fontInfo:
     Name: Oswald
