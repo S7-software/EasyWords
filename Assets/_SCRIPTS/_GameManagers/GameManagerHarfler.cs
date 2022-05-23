@@ -12,6 +12,7 @@ public class GameManagerHarfler : MonoBehaviour
     }
     private void Start()
     {
+        AdControl.instance.CloseBanner();
         CanvasUI.instance.SetUI(true, "ALPHABET");
     }
 

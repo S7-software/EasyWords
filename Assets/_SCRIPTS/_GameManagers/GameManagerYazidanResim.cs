@@ -24,6 +24,7 @@ public class GameManagerYazidanResim : MonoBehaviour
 
     private void Start()
     {
+        AdControl.instance.CloseBanner();
         SetScore();
         SetGame(_secenekResims);
     }
@@ -45,6 +46,7 @@ public class GameManagerYazidanResim : MonoBehaviour
 
     void SetGame(SecenekResim[] secenekResims)
     {
+        AdControl.instance.ShowGecis();
         DoThis.ContainReset();
         foreach (var item in secenekResims)
         {

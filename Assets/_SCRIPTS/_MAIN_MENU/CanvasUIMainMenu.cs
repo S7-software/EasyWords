@@ -23,15 +23,17 @@ public class CanvasUIMainMenu : MonoBehaviour
    public bool _ilkGecisPremiumdan = false;
     private void Awake()
     {
-        TEMP._gidilecekSahne = Sahne.MainMenu;
         instance = this;
+        TEMP._gidilecekSahne = Sahne.MainMenu;
+        if(!PREMIUM.GetPremiumVar()) PREMIUM.PremiumSureKontrol();
         _goStats.SetActive(false);
         _statButton.SetIcon(_iconsOfStat[0]);
     }
 
     private void Start()
     {
-
+//        Debug.Log(GetListOfWords.FullPaket(Categories.Karisik).Count);
+        
 
         SetButtonPremium();
     }

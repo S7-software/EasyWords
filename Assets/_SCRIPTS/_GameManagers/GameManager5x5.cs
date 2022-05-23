@@ -24,6 +24,7 @@ public class GameManager5x5 : MonoBehaviour
     }
     private void Start()
     {
+        AdControl.instance.CloseBanner();
         SetScore();
         SetOyun();
     }
@@ -150,6 +151,7 @@ public class GameManager5x5 : MonoBehaviour
 
     private void SetOyun()
     {
+        AdControl.instance.ShowGecis();
         _sortingLayerLine = -100;
         List<Color> _colorsList = new List<Color>();
         foreach (var item in _colors)

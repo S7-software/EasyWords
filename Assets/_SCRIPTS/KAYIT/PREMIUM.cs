@@ -31,8 +31,11 @@ public class PREMIUM : MonoBehaviour
 
     public static void PremiumSureKontrol()
     {
-       
-        if (GetPremiumBirSonrakiGun().Date <= DateTime.Now.Date)
+        DateTime temp = GetPremiumBirSonrakiGun();
+        //DateTime temp = DateTime.Parse("05/22/2022");
+
+
+        if (temp.Date <= DateTime.Now.Date)
         {
             SetPremiumBirSonrakiGun(DateTime.Now.AddDays(1));
             SetPremiumGunlukCount(5);

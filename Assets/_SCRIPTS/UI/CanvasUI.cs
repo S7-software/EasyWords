@@ -28,6 +28,7 @@ public class CanvasUI : MonoBehaviour
 
     private void SetPremiumButton()
     {
+      
       if(PREMIUM.GetPremiumVar() || TEMP._secilenCategorie == Categories.Karisik || TEMP._gidilecekSahne == Sahne.Harfler
             || TEMP._gidilecekSahne == Sahne.Sayilar)
         {
@@ -42,6 +43,7 @@ public class CanvasUI : MonoBehaviour
     private void Start()
     {
         SetButtonsDurum();
+      
     }
 
     private void Update()

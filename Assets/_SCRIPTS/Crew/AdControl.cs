@@ -6,17 +6,29 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 {
     public static AdControl instance;
     string gameId = "4737807";
-    string placementIdBanner = "Banner_Android";
-    string placementIdGecis = "Rewarded_Android";
-    string placementIdOdul = "Rewarded_Yeni_Gorev";
+    string placementIdBanner = "and_EasyWord_Banner";
+    string placementIdGecis = "and_EasyWord_Gecis";
+    string placementIdOdul = "and_EasyWord_Odul";
     bool testMode = false;
     private void Awake()
     {
-        instance = this;
+
+        
+        if (FindObjectsOfType<AdControl>().Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+            
+        }
     }
+    
     void Start()
     {
-        if (!AYARLAR.GetReklamVar()) return;
+      if (!AYARLAR.GetReklamVar()) return;
         Advertisement.Initialize(gameId, testMode);
 
 
@@ -32,8 +44,12 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     public void ShowGecis()
     {
         if (!AYARLAR.GetReklamVar()) return;
-
-        Advertisement.Show(placementIdGecis, instance);
+        if (PREMIUM.GetPremiumGunlukCalisiyor()) { return; }
+        TEMP.CountReklamaKalan--;
+        Debug.Log(TEMP.CountReklamaKalan);
+        if (TEMP.CountReklamaKalan != 0) return;
+        Advertisement.Show(placementIdGecis);
+        TEMP.CountReklamaKalan = Random.Range(20,26);
     }
     public void ShowBanner()
     {
@@ -112,7 +128,12 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
                 }
                 else if (placementId == placementIdOdul)
                 {
-                    Debug.Log("odul basarili");
+                    FindObjectOfType<UI_PREMIUM>().SureliPremiumVer();
+                }
+                else
+                {
+                    Debug.Log("odul bilinmeyen");
+
                 }
 
 

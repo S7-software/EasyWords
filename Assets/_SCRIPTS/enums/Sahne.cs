@@ -7,5 +7,6 @@
     EslestirmeSestenYazi1x5,
     EslestirmeSestenResim1x5,
     Harfler,
-    Sayilar
+    Sayilar,
+    Intro
 }

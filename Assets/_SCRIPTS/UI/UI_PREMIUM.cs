@@ -33,6 +33,7 @@ public class UI_PREMIUM : MonoBehaviour
     }
     private void Start()
     {
+        AdControl.instance.ShowBanner();
 
         IlkAyar();
     }
@@ -118,8 +119,11 @@ public class UI_PREMIUM : MonoBehaviour
 
     public void EvetntMainMenu()
     {
+        AdControl.instance.CloseBanner();
         if (DoThis.GetMyButtonFromScene("premium"))
         {
+            
+
             CanvasUIMainMenu.instance.SetButtonPremium();
             Destroy(gameObject);
         }
@@ -131,38 +135,46 @@ public class UI_PREMIUM : MonoBehaviour
         if (!_myButtonAktif) return;
         if (_reklamVar)
         {
-            DateTime temp = DateTime.Now.AddMinutes(0.15f);
-            PREMIUM.SetPremiumBitmesineKalanSure(temp);
-            temp = DateTime.Now.AddMinutes(0.25f);
-
-            PREMIUM.SetPremiumAlinacakBirSonrakiSure(temp);
-            int tempInt = PREMIUM.GetPremiumGunlukCount();
-            tempInt--;
-            PREMIUM.SetPremiumGunlukCount(tempInt);
-            _count = tempInt;
-            PREMIUM.SetPremiumGunlukCalisiyor(true);
-            PREMIUM.SetPremiumGunlukAlinabilir(false);
-            PREMIUM.DebugAll();
-            if (CanvasUI.instance) CanvasUI.instance.SetSureliPremium(true);
-            if (DoThis.GetMyButtonFromScene("premium")) DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.basildi);
-            if (CanvasUIMainMenu.instance) {
-                CanvasUIMainMenu.instance._premiumButtonAktif = false;
-                CanvasUIMainMenu.instance._ilkGecisPremiumdan = false;
-            }
-            Invoke(nameof(YokEt), _delayYokEt);
+            AdControl.instance.ShowOdul();
         }
-        else if (_reklamVar)
+        else 
         {
-            //reklam
+            SureliPremiumVer();
         }
 
 
     }
 
+  public  void SureliPremiumVer()
+    {
+        AdControl.instance.CloseBanner();
+        DateTime temp = DateTime.Now.AddMinutes(5f);
+        PREMIUM.SetPremiumBitmesineKalanSure(temp);
+        temp = DateTime.Now.AddMinutes(15f);
+
+        PREMIUM.SetPremiumAlinacakBirSonrakiSure(temp);
+        int tempInt = PREMIUM.GetPremiumGunlukCount();
+        tempInt--;
+        PREMIUM.SetPremiumGunlukCount(tempInt);
+        _count = tempInt;
+        PREMIUM.SetPremiumGunlukCalisiyor(true);
+        PREMIUM.SetPremiumGunlukAlinabilir(false);
+        PREMIUM.DebugAll();
+        if (CanvasUI.instance) CanvasUI.instance.SetSureliPremium(true);
+        if (DoThis.GetMyButtonFromScene("premium")) DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.basildi);
+        if (CanvasUIMainMenu.instance)
+        {
+            CanvasUIMainMenu.instance._premiumButtonAktif = false;
+            CanvasUIMainMenu.instance._ilkGecisPremiumdan = false;
+        }
+        Invoke(nameof(YokEt), _delayYokEt);
+    }
 
 
     void YokEt()
     {
+        
+
         Destroy(gameObject);
     }
     IEnumerator AnaMenuyeGit(float delay)

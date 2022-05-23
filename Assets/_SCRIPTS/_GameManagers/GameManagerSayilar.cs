@@ -13,6 +13,7 @@ public class GameManagerSayilar : MonoBehaviour
     }
     private void Start()
     {
+        AdControl.instance.CloseBanner();
         CanvasUI.instance.SetUI(true, "NUMBERS");
     }
 

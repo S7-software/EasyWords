@@ -12,7 +12,10 @@ public class UI_KATEGORI : MonoBehaviour
     {
         ButtonlaraHandleAta();
     }
-
+    private void Start()
+    {
+        AdControl.instance.ShowBanner();
+    }
     private void ButtonlaraHandleAta()
     {
         _btnX.onClick.AddListener(HandleX);
@@ -20,6 +23,7 @@ public class UI_KATEGORI : MonoBehaviour
 
     public void HandleX()
     {
+        AdControl.instance.CloseBanner();
         foreach (var item in FindObjectsOfType<btnMenu>())
         {
             item.StartButton();

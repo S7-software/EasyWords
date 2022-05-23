@@ -21,6 +21,7 @@ public class UI_AYARLAR : MonoBehaviour
     {
         _goReset.SetActive(false);
         SesAyarla();
+        AdControl.instance.ShowBanner();
     }
 
 
@@ -36,6 +37,7 @@ public class UI_AYARLAR : MonoBehaviour
     }
     public void EventExit()
     {
+        AdControl.instance.CloseBanner();
 
         GameObject.Find("myBtnAyarlar").GetComponent<MyButton>().SetDurumButton(MyButton.durumButton.basilmadi);
         Destroy(gameObject);
@@ -48,14 +50,23 @@ public class UI_AYARLAR : MonoBehaviour
     }
     public void EventResetYes()
     {
-        AYARLAR.Default();
-        PREMIUM.Default();
+        //AYARLAR.Default();
+        //PREMIUM.Default();
 
+        bool ads = AYARLAR.GetReklamVar();
+        bool pre = PREMIUM.GetPremiumVar();
+        PlayerPrefs.DeleteAll();
+        //////////////////////////////////
+        AYARLAR.SetReklamVar(ads);     //
+        PREMIUM.SetPremiumVar(pre);   //
+        //////////////////////////////////
+        
         Invoke(nameof(SahneyeGit), 0.4f);
     }
     void SahneyeGit()
     {
-        GoToScene.Hangi(Sahne.MainMenu);
+        AdControl.instance.CloseBanner();
+        GoToScene.Hangi(Sahne.Intro);
     }
     public void EventResetNo()
     {

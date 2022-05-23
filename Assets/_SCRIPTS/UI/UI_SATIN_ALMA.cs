@@ -7,6 +7,7 @@ public class UI_SATIN_ALMA : MonoBehaviour
 {
     public static UI_SATIN_ALMA instance;
     [SerializeField] MyButton _btnAds, _btnPremium, _btnMenu,_btnAdsPre;
+    [SerializeField] Button _IAPAds, _IAPPremium, _IAPAdsPre;
     [SerializeField] TMP_Text _txtAds,_txtPremium,_txtAdsPre;
     [SerializeField] Image _imgAds,_imgPremium,_imgAdsPre;
     [SerializeField] Sprite _iconBtnAdsPreBasarisiz;
@@ -19,6 +20,8 @@ public class UI_SATIN_ALMA : MonoBehaviour
     }
     private void Start()
     {
+        AdControl.instance.ShowBanner();
+
         SetDurum();
     }
 
@@ -29,27 +32,34 @@ public class UI_SATIN_ALMA : MonoBehaviour
     }
     public void EvetnAds(bool basarili)
     {
-        SetAdsDurum(basarili);
+        AdControl.instance.CloseBanner();
         AYARLAR.SetReklamVar(  !basarili);
+        SetDurum();
     }
     public void EventPremium()
     {
     }
     public void EventPremium(bool basarili)
     {
-        SetPremiumDurum(basarili);
+        DoThis.GetMyButtonFromScene("premium").gameObject.SetActive(false);
+        PREMIUM.SetPremiumGunlukCalisiyor(false);
         PREMIUM.SetPremiumVar( basarili);
+        SetDurum();
     }
     public void EventAdsPremium()
     {
     }
     public void EventAdsPremium(bool basarili)
     {
-        SetPremiumDurum(basarili);
+        DoThis.GetMyButtonFromScene("premium").gameObject.SetActive(false);
         PREMIUM.SetPremiumVar(basarili);
+        AdControl.instance.CloseBanner();
+        AYARLAR.SetReklamVar(!basarili);
+        SetDurum();
     }
     public void EventExit()
     {
+        AdControl.instance.CloseBanner();
 
         DoThis.GetMyButtonFromScene("satinalma").SetDurumButton(MyButton.durumButton.basilmadi);
         Destroy(gameObject);
@@ -57,23 +67,29 @@ public class UI_SATIN_ALMA : MonoBehaviour
     }
   void SetDurum()
     {
-        //bool durumAds = !AYARLAR._reklamVar;
-        //bool durumPre = AYARLAR._premiumVar;
-        bool durumAds = false;
-        bool durumPre = false;
+        bool durumAds = !AYARLAR.GetReklamVar();
+        bool durumPre = PREMIUM.GetPremiumVar();
+        //bool durumAds = false;
+        //bool durumPre = false;
 
         SetAdsDurum(durumAds);
         SetPremiumDurum(durumPre);
         SetAdsPremiumDurum(durumAds, durumPre);
 
+        _IAPAds.enabled = !durumAds;
+        _IAPPremium.enabled = !durumPre;
+        _IAPAdsPre.enabled = !durumAds&&!durumPre;
+
         _txtAds.text = _txtTempAds.text;
         _txtPremium.text = _txtTempPre.text;
         _txtAdsPre.text = _txtTempAdsPre.text;
+
     }
     void SetAdsDurum(bool satinAlindi)
     {
         if (satinAlindi)
         {
+            
             _btnAds.SetDurumButton(MyButton.durumButton.aktifDegil);
             _btnAds.SetTusIceride(true);
             _txtAds.enabled = false;
@@ -91,6 +107,7 @@ public class UI_SATIN_ALMA : MonoBehaviour
     {
         if (satinAlindi)
         {
+
             _btnPremium.SetDurumButton(MyButton.durumButton.aktifDegil);
             _btnPremium.SetTusIceride(true);
             _txtPremium.enabled = false;

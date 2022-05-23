@@ -19,6 +19,7 @@ public class GameManagerSestenenYazi : MonoBehaviour
     }
     private void Start()
     {
+        AdControl.instance.CloseBanner();
         SetGame(_secenekler);
         SetScore();
     }
@@ -64,6 +65,8 @@ public class GameManagerSestenenYazi : MonoBehaviour
 
     void SetGame(SecenekKelime[] secenekler)
     {
+        AdControl.instance.ShowGecis();
+
         DoThis.ContainReset();
         foreach (var item in secenekler)
         {
