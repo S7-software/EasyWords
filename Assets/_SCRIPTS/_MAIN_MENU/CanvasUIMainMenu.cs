@@ -25,6 +25,7 @@ public class CanvasUIMainMenu : MonoBehaviour
     {
         instance = this;
         TEMP._gidilecekSahne = Sahne.MainMenu;
+
         if(!PREMIUM.GetPremiumVar()) PREMIUM.PremiumSureKontrol();
         _goStats.SetActive(false);
         _statButton.SetIcon(_iconsOfStat[0]);
@@ -40,13 +41,16 @@ public class CanvasUIMainMenu : MonoBehaviour
     private void LateUpdate()
     {
         if (_premiumButtonAktif) return;
+
+
+
         if (PREMIUM.GetPremiumGunlukCalisiyor())
         {
             _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
             _txtPremium.color = Color.green;
             PREMIUM.PremiumSureKontrol();
         }
-        else if (!PREMIUM.GetPremiumGunlukAlinabilir()&& PREMIUM.GetPremiumGunlukCount() > 0)
+        else if (!PREMIUM.GetPremiumGunlukAlinabilir() && PREMIUM.GetPremiumGunlukCount() > 0)
         {
             if (!_ilkGecisPremiumdan)
             {
@@ -71,7 +75,38 @@ public class CanvasUIMainMenu : MonoBehaviour
             _txtPremium.color = Color.yellow;
             PREMIUM.PremiumSureKontrol();
         }
-       
+        //if (PREMIUM.GetPremiumGunlukCalisiyor())
+        //{
+        //    _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumBitmesineKalanSure());
+        //    _txtPremium.color = Color.green;
+        //    PREMIUM.PremiumSureKontrol();
+        //}
+        //else if (!PREMIUM.GetPremiumGunlukAlinabilir()&& PREMIUM.GetPremiumGunlukCount() > 0)
+        //{
+        //    if (!_ilkGecisPremiumdan)
+        //    {
+        //        _ilkGecisPremiumdan = true;
+        //        if (FindObjectOfType<UI_KATEGORI>()) FindObjectOfType<UI_KATEGORI>().HandleX();
+        //    }
+        //    _txtPremium.text = DoThis.GeriSayimFrom(PREMIUM.GetPremiumAlinacakBirSonrakiSure());
+        //    _txtPremium.color = Color.yellow;
+        //    PREMIUM.PremiumSureKontrol();
+
+        //}
+        //else if (PREMIUM.GetPremiumGunlukAlinabilir())
+        //{
+        //    _premiumButtonAktif = true;
+        //    SetButtonPremium();
+        //    if (FindObjectOfType<UI_KATEGORI>()) FindObjectOfType<UI_KATEGORI>().HandleX();
+
+        //}
+        //else if (PREMIUM.GetPremiumGunlukCount() <= 0)
+        //{
+        //    _txtPremium.text = DoThis.GeriSayimGunSonu();
+        //    _txtPremium.color = Color.yellow;
+        //    PREMIUM.PremiumSureKontrol();
+        //}
+
 
     }
 
@@ -81,6 +116,8 @@ public class CanvasUIMainMenu : MonoBehaviour
         {
             _myBtnPremium.gameObject.SetActive(false); return;
         }
+
+
 
         if (PREMIUM.GetPremiumGunlukCalisiyor() || !PREMIUM.GetPremiumGunlukAlinabilir())
         {

@@ -29,19 +29,24 @@ public class PREMIUM : MonoBehaviour
     public static DateTime GetPremiumBirSonrakiGun() { return DateTime.Parse(PlayerPrefs.GetString("PremiumBirSonrakiGun", DateTime.Now.AddDays(1).ToString())); }
     public static void SetPremiumBirSonrakiGun(DateTime deger) { PlayerPrefs.SetString("PremiumBirSonrakiGun", deger.ToString()); }
 
+
+    public static bool GetKayitliGuneEsitVeyaGundenBuyuk(DateTime date) { return date.Date <= DateTime.Now.Date; }
     public static void PremiumSureKontrol()
     {
         DateTime temp = GetPremiumBirSonrakiGun();
-        //DateTime temp = DateTime.Parse("05/22/2022");
+        //DateTime temp = DateTime.Parse("05/29/2022 13:10:06");
+        DateTime tempNow = DateTime.Now.Date;
+        //DateTime tempNow = DateTime.Parse("06/3/2022 13:10:06");
+       // DebugAll();
 
-
-        if (temp.Date <= DateTime.Now.Date)
+        if (temp.Date <= tempNow)
         {
-            SetPremiumBirSonrakiGun(DateTime.Now.AddDays(1));
+            
             SetPremiumGunlukCount(5);
             SetPremiumGunlukCalisiyor(false);
             SetPremiumGunlukAlinabilir(true);
-           
+            SetPremiumBirSonrakiGun(DateTime.Now.AddDays(1));
+
         }
         else if (GetPremiumBitmesineKalanSure().TimeOfDay <= DateTime.Now.TimeOfDay && GetPremiumGunlukCalisiyor())
         {
@@ -49,12 +54,10 @@ public class PREMIUM : MonoBehaviour
         }
         else if (GetPremiumAlinacakBirSonrakiSure().TimeOfDay <= DateTime.Now.TimeOfDay && !GetPremiumGunlukCalisiyor())
         {
-          if(GetPremiumGunlukCount()!=0)  SetPremiumGunlukAlinabilir(true);
+            if (GetPremiumGunlukCount() != 0) SetPremiumGunlukAlinabilir(true);
         }
 
-
     }
-
     public static void Default()
     {
         //SetPremiumVar(false);
@@ -73,7 +76,7 @@ public class PREMIUM : MonoBehaviour
             "\n GetPremiumGunlukCount() " + GetPremiumGunlukCount() +
             "\n GetPremiumAlinacakBirSonrakiSure() " + GetPremiumAlinacakBirSonrakiSure() +
             "\n GetPremiumBitmesineKalanSure() " + GetPremiumBitmesineKalanSure() +
-            "\n GetPremiumBirSonrakiGun() " + GetPremiumBirSonrakiGun()
+            "\n GetPremiumBirSonrakiGun() " + GetPremiumBirSonrakiGun().Date
             );
     }
    

@@ -6,7 +6,7 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
 {
     public static AdControl instance;
     string gameId = "4737807";
-    string placementIdBanner = "and_EasyWord_Banner";
+    string placementIdBanner = "and_EasyWord_Banner2";
     string placementIdGecis = "and_EasyWord_Gecis";
     string placementIdOdul = "and_EasyWord_Odul";
     bool testMode = false;
@@ -29,7 +29,7 @@ public class AdControl : MonoBehaviour, IUnityAdsInitializationListener, IUnityA
     void Start()
     {
       if (!AYARLAR.GetReklamVar()) return;
-        Advertisement.Initialize(gameId, testMode);
+        Advertisement.Initialize(gameId, testMode,instance);
 
 
     }

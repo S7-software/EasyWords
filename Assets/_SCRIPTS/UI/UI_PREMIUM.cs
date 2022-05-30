@@ -148,9 +148,14 @@ public class UI_PREMIUM : MonoBehaviour
   public  void SureliPremiumVer()
     {
         AdControl.instance.CloseBanner();
+
         DateTime temp = DateTime.Now.AddMinutes(5f);
         PREMIUM.SetPremiumBitmesineKalanSure(temp);
         temp = DateTime.Now.AddMinutes(15f);
+
+        //DateTime temp = DateTime.Now.AddSeconds(10f);
+        //PREMIUM.SetPremiumBitmesineKalanSure(temp);
+        //temp = DateTime.Now.AddSeconds(15f);
 
         PREMIUM.SetPremiumAlinacakBirSonrakiSure(temp);
         int tempInt = PREMIUM.GetPremiumGunlukCount();
@@ -159,7 +164,7 @@ public class UI_PREMIUM : MonoBehaviour
         _count = tempInt;
         PREMIUM.SetPremiumGunlukCalisiyor(true);
         PREMIUM.SetPremiumGunlukAlinabilir(false);
-        PREMIUM.DebugAll();
+//        PREMIUM.DebugAll();
         if (CanvasUI.instance) CanvasUI.instance.SetSureliPremium(true);
         if (DoThis.GetMyButtonFromScene("premium")) DoThis.GetMyButtonFromScene("premium").SetDurumButton(MyButton.durumButton.basildi);
         if (CanvasUIMainMenu.instance)

@@ -5,21 +5,25 @@ using UnityEngine.UI;
 
 public class UI_AYARLAR : MonoBehaviour
 {
-    [SerializeField] MyButton _btnSesOn, _btnSesOff, _btnReset, _btnResetNo;
+    [SerializeField] MyButton _btnSesOn, _btnSesOff, _btnReset, _btnResetNo,_btnAbout,_btnAboutKapat;
     [SerializeField] Image[] _imgsSesIcon;
     [SerializeField] Sprite[] _sptsSesIcon;
-    [SerializeField] GameObject _goReset;
+    [SerializeField] GameObject _goReset,_goAbout;
+    [SerializeField] Button _btnTxtGizlilik, _btnTxtMail;
 
     bool _isSesOn = true;
     private void Awake()
     {
         // _isSesOn = Kayit.GetSesAcik();
         _isSesOn = AYARLAR.GetSesAcik();
+        _btnTxtGizlilik.onClick.AddListener(HandleGizlilik);
+        _btnTxtMail.onClick.AddListener(HandleMail);
 
     }
     private void Start()
     {
         _goReset.SetActive(false);
+        _goAbout.SetActive(false);
         SesAyarla();
         AdControl.instance.ShowBanner();
     }
@@ -48,6 +52,10 @@ public class UI_AYARLAR : MonoBehaviour
     {
         _goReset.SetActive(true);
     }
+    public void EventAbonut()
+    {
+        _goAbout.SetActive(true);
+    }
     public void EventResetYes()
     {
         //AYARLAR.Default();
@@ -63,6 +71,15 @@ public class UI_AYARLAR : MonoBehaviour
         
         Invoke(nameof(SahneyeGit), 0.4f);
     }
+
+    private void HandleGizlilik()
+    {
+        Application.OpenURL("http://s7-software.com/privacy-EasyWords.html");
+    }
+    private void HandleMail()
+    {
+        Application.OpenURL("mailto:sinantekin90@gmail.com");
+    }
     void SahneyeGit()
     {
         AdControl.instance.CloseBanner();
@@ -73,6 +90,12 @@ public class UI_AYARLAR : MonoBehaviour
         _goReset.SetActive(false);
         _btnReset.SetDurumButton(MyButton.durumButton.basilmadi);
         _btnResetNo.SetDurumButton(MyButton.durumButton.basilmadi);
+    }
+    public void EventAboutKapat()
+    {
+        _goAbout.SetActive(false);
+        _btnAbout.SetDurumButton(MyButton.durumButton.basilmadi);
+        _btnAboutKapat.SetDurumButton(MyButton.durumButton.basilmadi);
     }
     void SesAyarla()
     {
