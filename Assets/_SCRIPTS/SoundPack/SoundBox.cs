@@ -6,6 +6,7 @@ public class SoundBox : MonoBehaviour
 {
     public static SoundBox instance;
     AudioSource audioSource;
+
     private void Awake()
     {
         if (SoundBox.instance)
@@ -16,9 +17,8 @@ public class SoundBox : MonoBehaviour
         {
             DontDestroyOnLoad(this.gameObject);
             instance = this;
-            
         }
-        
+
         audioSource = GetComponent<AudioSource>();
     }
 
@@ -26,36 +26,43 @@ public class SoundBox : MonoBehaviour
     {
         audioSource.PlayOneShot(GetAudioClip(name));
     }
+
     public void PlayOneShot(string name)
     {
         audioSource.PlayOneShot(GetAudioClip(name));
     }
+
     public void StopAndPlayOneShot(string name)
     {
         audioSource.Stop();
         audioSource.PlayOneShot(GetAudioClip(name));
     }
+
     public void PlayIfDontPlay(NamesOfSound name)
     {
-       
-        if (!audioSource.isPlaying) PlayOneShot(name);
+        if (!audioSource.isPlaying)
+            PlayOneShot(name);
     }
+
     public void PlayIfDontPlay(string name)
     {
         SetVolume(1f);
-        if (!audioSource.isPlaying) PlayOneShot(name);
+        if (!audioSource.isPlaying)
+            PlayOneShot(name);
     }
 
     public void SetVolume(float volume)
     {
         audioSource.volume = volume;
     }
+
     AudioClip GetAudioClip(NamesOfSound name)
     {
         //SetVolume(Kayit.GetSesAcik()? 0.5f:0);
-        SetVolume(AYARLAR.GetSesAcik()? 0.5f:0);
+        SetVolume(AYARLAR.GetSesAcik() ? 0.5f : 0);
         return Resources.Load<AudioClip>("Sounds/" + name.ToString());
     }
+
     AudioClip GetAudioClip(string name)
     {
         SetVolume(1f);
@@ -63,7 +70,8 @@ public class SoundBox : MonoBehaviour
         return Resources.Load<AudioClip>("Sounds/" + name);
     }
 
-    public bool IsPlaying() { return audioSource.isPlaying; }
-
-
+    public bool IsPlaying()
+    {
+        return audioSource.isPlaying;
+    }
 }
